@@ -20,8 +20,12 @@ module.exports = configure(function (ctx) {
     // --> boot files are part of "main.js"
     // https://quasar.dev/quasar-cli/boot-files
     boot: [
+      'addressbar-color',
       'i18n',
       'axios',
+      // 'eosapi',
+      // 'vueclipboard',
+      // 'firebase'
     ],
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css
@@ -91,11 +95,82 @@ module.exports = configure(function (ctx) {
       // (like functional components as one of the examples),
       // you can manually specify Quasar components/directives to be available everywhere:
       //
-      // components: [],
+      components: [
+        'QLayout',
+        'QHeader',
+        'QFooter',
+        'QDrawer',
+        'QPageContainer',
+        'QPage',
+        'QToolbar',
+        'QToolbarTitle',
+        'QBtn',
+        'QIcon',
+        'QList',
+        'QItem',
+        'QItemSection',
+        'QItemLabel',
+        'QDialog',
+        'QCard',
+        'QBar',
+        'QTooltip',
+        'QSpace',
+        'QCardSection',
+        'QSpinner',
+        'QSpinnerDots',
+        'QInput',
+        'QCarousel',
+        'QCarouselControl',
+        'QCarouselSlide',
+        'QBtnDropdown',
+        'QVideo',
+        'QLinearProgress',
+        'QSlider',
+        'QBadge',
+        'QSelect',
+        'QTabs',
+        'QTab',
+        'QTabPanels',
+        'QTabPanel',
+        'QRouteTab',
+        'QTable',
+        'QTh',
+        'QTr',
+        'QTd',
+        'QCheckbox',
+        'QLinearProgress',
+        'QMenu',
+        'QDate',
+        'QTime',
+        'QPopupProxy',
+        'QParallax',
+        'QPageScroller',
+        'QSeparator',
+        'QScrollArea',
+        'QExpansionItem',
+        'QToggle',
+        'QAvatar',
+        'QTree',
+        'QImg',
+        'QColor',
+        'QSplitter',
+        'QCircularProgress',
+        'QMarkupTable',
+        'QFab',
+        'QFabAction',
+        'QPageSticky',
+        'QInfiniteScroll',
+        'QFile',
+        'QIntersection'
+      ],
       // directives: [],
 
       // Quasar plugins
-      plugins: []
+      plugins: [
+        'Notify',
+        'AddressbarColor',
+        'Loading'
+      ]
     },
 
     // animations: 'all', // --- includes all animations
@@ -110,10 +185,10 @@ module.exports = configure(function (ctx) {
       // manualPostHydrationTrigger: true,
 
       prodPort: 3000, // The default port that the production server should use
-                      // (gets superseded if process.env.PORT is specified at runtime)
+      // (gets superseded if process.env.PORT is specified at runtime)
 
       maxAge: 1000 * 60 * 60 * 24 * 30,
-        // Tell browser when a file from the server should expire from cache (in ms)
+      // Tell browser when a file from the server should expire from cache (in ms)
 
       chainWebpackWebserver (/* chain */) {
         //

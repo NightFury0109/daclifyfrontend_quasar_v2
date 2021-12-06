@@ -1,24 +1,37 @@
-// Quasar SCSS (& Sass) Variables
+// Quasar Stylus Variables
 // --------------------------------------------------
 // To customize the look and feel of this app, you can override
-// the Sass/SCSS variables found in Quasar's source Sass/SCSS files.
+// the Stylus variables found in Quasar's source Stylus files.
 
 // Check documentation for full list of Quasar variables
-
-// Your own variables (that are declared here) and Quasar's own
-// ones will be available out of the box in your .vue/.scss/.sass files
 
 // It's highly recommended to change the default colors
 // to match your app's branding.
 // Tip: Use the "Theme Builder" on Quasar's documentation website.
 
-$primary   : #1976D2;
-$secondary : #26A69A;
-$accent    : #9C27B0;
+$primary   : #7DC6EC;
+$secondary : #272822;
+$accent    : #1E2128;
 
-$dark      : #1D1D1D;
 
 $positive  : #21BA45;
-$negative  : #C10015;
+$negative  : #CB2739;
 $info      : #31CCEC;
 $warning   : #F2C037;
+
+
+$primary-light : lighten($primary, 80%) ;
+
+// :root
+//   --q-color-primary-light $primary-light
+
+// .text-primary-light{
+//   color $primary-light !important
+//   color var(--q-color-primary-light) !important 
+// }
+
+// .bg-primary-light{
+//    background $primary-light !important
+//   background var(--q-color-primary-light) !important 
+// }
+
