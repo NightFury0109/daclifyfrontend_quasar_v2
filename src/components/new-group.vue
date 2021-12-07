@@ -258,7 +258,7 @@ export default defineComponent({
     isValidAccountName,
     isAvailableAccountName,
     async isavailableAccountNameWrapper(v) {
-      const test = await isAvailableAccountName(v);
+      const test = await isAvailableAccountName({v:v,vm:this});
       console.log(test);
       if (test === true) {
         this.account_name_validated = true;

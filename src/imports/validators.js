@@ -15,9 +15,11 @@ export function isValidAccountName (v) {
   }
 }
 
-export async function isAvailableAccountName (v) {
-  v = v.toLowerCase();
-  let res = await app.config.globalProperties.$eos.api.rpc.get_account(v).catch(e => false);
+export async function isAvailableAccountName (payload) {
+  payload.v = payload.v.toLowerCase();
+  console.log(payload.v)
+  let res = await payload.vm.$eos.api.rpc.get_account(payload.v).catch(e => false);
+  console.log(res)
   if (!res) {
     //accountname not found
     return true;

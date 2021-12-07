@@ -7980,10 +7980,10 @@ vue-clipboard3@^1.0.1:
   dependencies:
     clipboard "^2.0.6"
 
-vue-code-highlight@0.7.2:
-  version "0.7.2"
-  resolved "https://registry.yarnpkg.com/vue-code-highlight/-/vue-code-highlight-0.7.2.tgz#c19775a47c450af1afa8abc1c66203f2e4fcbb84"
-  integrity sha512-b9kvkgKu9TiZ6Y6bbPbuE6/a7nULgngfeBLgKm6yTVe58ABQkWZhNRZYjgMfuBdY1XJnLx/5zZGLRCw9Z9GoVw==
+vue-code-highlight@0.7.8:
+  version "0.7.8"
+  resolved "https://registry.yarnpkg.com/vue-code-highlight/-/vue-code-highlight-0.7.8.tgz#04f8e0c1c17edd52f7c769dd19dda1d2d928bc90"
+  integrity sha512-jMt1W0DGisNZ3B2TASFCPLEswohVrwImX+TxzMIZINZyAUUNZ1Xth3soJw1xepTsMgxkIkhsmN/xVNpiI3bU4g==
   dependencies:
     prism-es6 "^1.2.0"
     vue "^2.5.16"
