@@ -9,8 +9,8 @@ export async function initRoutine ({ dispatch }, { vm }) {
   dispatch('fetchModuleRegistry', vm);
 }
 
-export async function fetchGroups ({ state, commit, getters, rootGetters }) {
-  let res = await this._vm.$eos.api.rpc.get_table_rows({
+export async function fetchGroups ({ state, commit, getters, rootGetters }, { vm }) {
+  let res = await vm.$eos.api.rpc.get_table_rows({
     json: true,
     code: getters.getAppConfig.groups_contract, //state.config.groups_contract,
     scope: getters.getAppConfig.groups_contract, //state.config.groups_contract,
