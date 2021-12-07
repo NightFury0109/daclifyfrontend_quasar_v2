@@ -1,6 +1,5 @@
 <template>
-  <h1>Hello</h1>
-  <!-- <q-page class=" bg-dark full-height">
+  <q-page class=" bg-dark full-height">
 
     <div class="header_box relative-position">
       <q-parallax src="statics/images/15410.jpg" :height="500">
@@ -42,7 +41,7 @@
       </div>
   
     </div>
-  </q-page> -->
+  </q-page>
 </template>
 
 <style></style>

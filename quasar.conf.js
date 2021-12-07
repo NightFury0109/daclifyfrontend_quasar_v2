@@ -23,7 +23,7 @@ module.exports = configure(function (ctx) {
       'addressbar-color',
       'i18n',
       'axios',
-      // 'eosapi',
+      'eosapi',
       // 'vueclipboard',
       // 'firebase'
     ],
@@ -36,7 +36,7 @@ module.exports = configure(function (ctx) {
     // https://github.com/quasarframework/quasar/tree/dev/extras
     extras: [
       // 'ionicons-v4',
-      // 'mdi-v5',
+      'mdi-v5',
       // 'fontawesome-v5',
       // 'eva-icons',
       // 'themify',
@@ -49,8 +49,8 @@ module.exports = configure(function (ctx) {
 
     // Full list of options: https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-build
     build: {
-      vueRouterMode: 'hash', // available values: 'hash', 'history'
-
+      vueRouterMode: 'history', // available values: 'hash', 'history'
+      vueCompiler: true,
       // transpile: false,
       // publicPath: '/',
 
@@ -70,9 +70,21 @@ module.exports = configure(function (ctx) {
 
       // https://quasar.dev/quasar-cli/handling-webpack
       // "chain" is a webpack-chain object https://github.com/neutrinojs/webpack-chain
-      chainWebpack (/* chain */) {
-        //
+      chainWebpack (chain) {
+        const nodePolyfillWebpackPlugin = require('node-polyfill-webpack-plugin');
+        chain.plugin('node-polyfill').use(nodePolyfillWebpackPlugin);
+        chain.module.rule('pug')
+          .test(/\.pug$/)
+          .use('pug-plain-loader')
+          .loader('pug-plain-loader');
       },
+      extendWebpack (cfg) {
+        cfg.resolve.fallback = { crypto: false };
+        cfg.module.rules.push({
+          test: /\.pug$/,
+          loader: 'pug-plain-loader'
+        });
+      }
     },
 
     // Full list of options: https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-devServer
@@ -175,7 +187,7 @@ module.exports = configure(function (ctx) {
 
     // animations: 'all', // --- includes all animations
     // https://quasar.dev/options/animations
-    animations: [],
+    animations: 'all',
 
     // https://quasar.dev/quasar-cli/developing-ssr/configuring-ssr
     ssr: {
@@ -202,8 +214,8 @@ module.exports = configure(function (ctx) {
 
     // https://quasar.dev/quasar-cli/developing-pwa/configuring-pwa
     pwa: {
-      workboxPluginMode: 'GenerateSW', // 'GenerateSW' or 'InjectManifest'
-      workboxOptions: {}, // only for GenerateSW
+      // workboxPluginMode: 'GenerateSW', // 'GenerateSW' or 'InjectManifest'
+      // workboxOptions: {}, // only for GenerateSW
 
       // for the custom service worker ONLY (/src-pwa/custom-service-worker.[js|ts])
       // if using workbox in InjectManifest mode
@@ -212,38 +224,38 @@ module.exports = configure(function (ctx) {
       },
 
       manifest: {
-        name: `Daclify by Animus`,
-        short_name: `Daclify by Animus`,
-        description: `Manage eosio accounts in group and serve your community as a DAC.`,
+        // name: 'Quasar App',
+        // short_name: 'Quasar App',
+        // description: 'A Quasar Framework app',
         display: 'standalone',
         orientation: 'portrait',
         background_color: '#ffffff',
         theme_color: '#027be3',
         icons: [
           {
-            src: 'icons/icon-128x128.png',
-            sizes: '128x128',
-            type: 'image/png'
+            'src': 'statics/icons/icon-128x128.png',
+            'sizes': '128x128',
+            'type': 'image/png'
           },
           {
-            src: 'icons/icon-192x192.png',
-            sizes: '192x192',
-            type: 'image/png'
+            'src': 'statics/icons/icon-192x192.png',
+            'sizes': '192x192',
+            'type': 'image/png'
           },
           {
-            src: 'icons/icon-256x256.png',
-            sizes: '256x256',
-            type: 'image/png'
+            'src': 'statics/icons/icon-256x256.png',
+            'sizes': '256x256',
+            'type': 'image/png'
           },
           {
-            src: 'icons/icon-384x384.png',
-            sizes: '384x384',
-            type: 'image/png'
+            'src': 'statics/icons/icon-384x384.png',
+            'sizes': '384x384',
+            'type': 'image/png'
           },
           {
-            src: 'icons/icon-512x512.png',
-            sizes: '512x512',
-            type: 'image/png'
+            'src': 'statics/icons/icon-512x512.png',
+            'sizes': '512x512',
+            'type': 'image/png'
           }
         ]
       }
