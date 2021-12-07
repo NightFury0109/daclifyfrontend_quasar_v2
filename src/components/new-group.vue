@@ -238,6 +238,7 @@
 
 <script>
 import { mapGetters } from "vuex";
+import { defineComponent } from 'vue';
 
 import wasmCompiler from "components/wasm-compiler";
 
@@ -246,7 +247,7 @@ import {
   isAvailableAccountName
 } from "../imports/validators";
 
-export default {
+export default defineComponent({
   name: "create",
   components: {
     wasmCompiler
@@ -411,7 +412,7 @@ export default {
     },
     openHubWallet(){
           let msg = `You don't have enough EOS/TLOS/WAX deposits to pay for RAM. Daclify calculated you need a minimum of ${this.getResourceEstimation} to deploy the daclify core contract. Excess deposits will be used to buy extra RAM. Daclify takes no fees.`
-          this.$root.$emit('showHubDeposits', msg);
+          this.emitter.emit('showHubDeposits', msg);
     },
     async next(resume_account_name = "") {
       
@@ -516,7 +517,7 @@ export default {
       }
     }
   }
-};
+});
 </script>
 <style>
 .create-group-width {

@@ -24,7 +24,8 @@ module.exports = configure(function (ctx) {
       'i18n',
       'axios',
       'eosapi',
-      // 'vueclipboard',
+      'vueclipboard',
+      'emitter',
       // 'firebase'
     ],
 

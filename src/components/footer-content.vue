@@ -55,9 +55,11 @@
 </template>
 
 <script>
+import { defineComponent } from 'vue';
 import { mapGetters } from "vuex";
 import { openURL } from "quasar";
-export default {
+
+export default defineComponent({
   // name: 'ComponentName',
   data() {
     return {
@@ -72,5 +74,5 @@ export default {
   methods: {
     openURL
   }
-};
+});
 </script>

@@ -4,9 +4,9 @@ import { getCssVar } from 'quasar';
 
 let CLOCK_TIMER = null;
 
-export async function initRoutine ({ dispatch }) {
-  dispatch('fetchComponentRegistry');
-  dispatch('fetchModuleRegistry');
+export async function initRoutine ({ dispatch }, { vm }) {
+  dispatch('fetchComponentRegistry', vm);
+  dispatch('fetchModuleRegistry', vm);
 }
 
 export async function fetchGroups ({ state, commit, getters, rootGetters }) {
@@ -54,8 +54,8 @@ export function stopClock () {
   CLOCK_TIMER = null;
 }
 
-export async function fetchComponentRegistry ({ state, commit, getters }) {
-  let res = await this._vm.$eos.api.rpc.get_table_rows({
+export async function fetchComponentRegistry ({ state, commit, getters }, vm) {
+  let res = await vm.$eos.api.rpc.get_table_rows({
     json: true,
     code: getters.getAppConfig.groups_contract, //state.config.groups_contract,
     scope: getters.getAppConfig.groups_contract, //state.config.groups_contract,
@@ -99,9 +99,9 @@ export async function fetchModuleVersions ({ state, commit, getters }, modulenam
   }
 }
 
-export async function fetchModuleRegistry ({ state, commit, getters }, payload) {
+export async function fetchModuleRegistry ({ state, commit, getters }, vm) {
 
-  let res = await this._vm.$eos.api.rpc.get_table_by_scope({
+  let res = await vm.$eos.api.rpc.get_table_by_scope({
     json: true,
     code: getters.getAppConfig.groups_contract, //state.config.groups_contract,
     table: "versions",

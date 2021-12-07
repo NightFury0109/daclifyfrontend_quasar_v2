@@ -1,3 +1,4 @@
+import { boot } from 'quasar/wrappers'
 import { JsonRpc, Api, Serialize, RpcError } from "@jafri/eosjs2";
 // import { JsonRpc, Api, Serialize, RpcError } from "eosjs";
 const { JsSignatureProvider } = require('@jafri/eosjs2/dist/eosjs-jssig');
@@ -27,8 +28,8 @@ class EosApi {
   }
 }
 
-export default ({ app, store }) => {
+export default boot(({ app, store }) => {
   console.log('eos injected in Vue prototype!');
   // Vue.prototype.$eos.api = api;
   app.config.globalProperties.$eos = new EosApi(store.getters["ual/getRpcEndpoints"]);
-};
+});
