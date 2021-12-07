@@ -1,15 +1,17 @@
 import { getLogoForToken } from "../../imports/tokens.js";
 export async function loggedInRoutine ({ dispatch, commit }, payload) {
+  dispatch('fetchAccount', { accountname: payload.accountname, vm: payload.vm });
+  dispatch('fetchHubDeposits', { accountname: payload.accountname, vm: payload.vm });
 
-  dispatch('fetchAccount', payload.accountname);
-  dispatch('fetchHubDeposits', payload.accountname);
-  let res = await dispatch('group/fetchProfile', payload.accountname, { root: true });
+  let res = await dispatch('group/fetchProfile', {
+    accountname: payload.accountname,
+    vm: payload.vm
+  }, { root: true });
+
   if (res) {
     commit('group/setMyOldProfile', JSON.parse(JSON.stringify(res)), { root: true });
   }
-
   //dispatch('fetchIsMember', payload.accountname);
-
 }
 
 export async function loggedOutRoutine ({ dispatch, commit }) {
@@ -19,31 +21,31 @@ export async function loggedOutRoutine ({ dispatch, commit }) {
   commit('setHubDeposits', false);
 }
 
-export async function fetchAccount ({ commit, rootState, rootGetters }, accountname) {
+export async function fetchAccount ({ commit, rootState, rootGetters }, payload) {
   //let account = rootGetters.getAccountName ||
-  if (!accountname) return;
-  let res = await this._vm.$eos.api.rpc.get_account(accountname);
+  if (!payload.accountname) return;
+  let res = await payload.vm.$eos.api.rpc.get_account(payload.accountname);
   if (res) {
     console.log('Fetched User Account', res);
     commit('setAccount', res);
   }
 }
 
-export async function fetchIsMember ({ commit, rootState, rootGetters }, accountname) {
-  let res = await this._vm.$eos.api.rpc.get_table_rows({
+export async function fetchIsMember ({ commit, rootState, rootGetters }, payload) {
+  let res = await payload.vm.$eos.api.rpc.get_table_rows({
     json: true,
     code: rootState.group.activeGroup,
     scope: rootState.group.activeGroup,
-    lower_bound: accountname,
-    upper_bound: accountname,
+    lower_bound: payload.accountname,
+    upper_bound: payload.accountname,
     table: "members",
     limit: 1
 
   });
   if (res && res.rows.length) {
-    if (res.rows[0].account == accountname) {
+    if (res.rows[0].account == payload.accountname) {
       console.log('fetched isMember', res.rows[0]);
-      if (rootState.ual.accountName == accountname) {
+      if (rootState.ual.accountName == payload.accountname) {
         commit('setIsMember', res.rows[0]);
       }
       return res.rows[0];
@@ -51,17 +53,17 @@ export async function fetchIsMember ({ commit, rootState, rootGetters }, account
   }
 }
 
-export async function fetchHubDeposits ({ state, rootState, commit, rootGetters }, accountname) {
+export async function fetchHubDeposits ({ state, rootState, commit, rootGetters }, payload) {
   let hubcntr = rootGetters["app/getAppConfig"].groups_contract;
-  let res = await this._vm.$eos.api.rpc.get_table_rows({
+  let res = await payload.vm.$eos.api.rpc.get_table_rows({
     json: true,
     code: hubcntr,
-    scope: accountname,
+    scope: payload.accountname,
     table: "deposits",
     limit: 1
   });
   if (res) {
-    console.log('fetched hub deposits for', accountname, res.rows);
+    console.log('fetched hub deposits for', payload.accountname, res.rows);
 
     res = res.rows;
     let balances = [];
@@ -80,7 +82,7 @@ export async function fetchHubDeposits ({ state, rootState, commit, rootGetters 
     commit('setHubDeposits', balances);
   }
   else {
-    console.log('fetching hub deposits failed for:', accountname);
+    console.log('fetching hub deposits failed for:', payload.accountname);
   }
 }
 

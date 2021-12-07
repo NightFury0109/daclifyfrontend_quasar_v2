@@ -100,7 +100,7 @@ export default defineComponent({
     async addToBucket(e_action) {
       this.propose_state_tab = "add_to_bucket";
       let action = e_action;
-      await this.$store.dispatch("bucket/addToBucket", action);
+      await this.$store.dispatch("bucket/addToBucket", {action:action, vm:this});
       this.back_to_first_tab(1500);
     },
 
@@ -109,7 +109,7 @@ export default defineComponent({
       this.propose_state_tab = "request_signature";
       this.error_msg = "";
       try {
-        let res = await this.$store.dispatch("group/propose", e_payload);
+        let res = await this.$store.dispatch("group/propose", { data: e_payload, vm: this });
 
         if (res && res.trxid) {
           this.propose_state_tab = "trx_success";

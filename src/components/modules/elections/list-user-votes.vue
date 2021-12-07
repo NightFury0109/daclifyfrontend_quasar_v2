@@ -166,6 +166,7 @@ export default defineComponent({
       if (!this.getUserVotes && this.getAccountName && this.getElectionsContract) {
         await this.$store.dispatch("elections/fetchUserVotes", {
           voter: this.getAccountName,
+          vm: this,
         });
       }
     },
@@ -186,6 +187,7 @@ export default defineComponent({
         setTimeout(() => {
           this.$store.dispatch("elections/fetchUserVotes", {
             voter: this.getAccountName,
+            vm: this,
           });
         }, 1000);
       }

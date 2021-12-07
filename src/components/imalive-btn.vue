@@ -52,6 +52,7 @@ export default defineComponent({
         setTimeout(() => {
           this.$store.dispatch("group/loadGroupRoutine", {
             groupname: this.getActiveGroup,
+            vm:this
           });
         }, 1000);
       } else {

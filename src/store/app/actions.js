@@ -79,9 +79,9 @@ export async function fetchComponentRegistry ({ state, commit, getters }, vm) {
   }
 }
 
-export async function fetchModuleVersions ({ state, commit, getters }, modulename) {
-  let module_type = modulename || "core";
-  let res = await this._vm.$eos.api.rpc.get_table_rows({
+export async function fetchModuleVersions ({ state, commit, getters }, payload) {
+  let module_type = payload.modulename || "core";
+  let res = await payload.vm.$eos.api.rpc.get_table_rows({
     json: true,
     code: getters.getAppConfig.groups_contract, //state.config.groups_contract,
     scope: module_type,

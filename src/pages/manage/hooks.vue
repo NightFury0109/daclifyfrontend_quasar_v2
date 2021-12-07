@@ -153,7 +153,10 @@ export default defineComponent({
     getHooksContract: {
       handler: async function (newVal, oldVal) {
         if (newVal && newVal != oldVal && !this.getHooks) {
-          this.$store.dispatch("hooks/fetchHooks", this.getHooksContract);
+          this.$store.dispatch("hooks/fetchHooks", {
+            hooksContract: this.getHooksContract,
+            vm: this,
+          });
         }
       },
       immediate: true,

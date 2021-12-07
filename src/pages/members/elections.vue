@@ -117,7 +117,7 @@ export default defineComponent({
       immediate: true,
       handler(newVal, oldVal) {
         if (newVal) {
-          this.$store.dispatch("elections/loadElectionsRoutine");
+          this.$store.dispatch("elections/loadElectionsRoutine",{vm:this});
         }
       },
     },

@@ -78,7 +78,8 @@ export default defineComponent({
           userterms.trx_id,
           userterms.block_num,
           "fileupload",
-          "content"
+          "content",
+          this
         );
         //get_content_from_trace(trxid, block_num, actionname, datakey )
         if (termsobj.error || !termsobj.found) {

@@ -78,6 +78,7 @@ export default defineComponent({
           this.$store.dispatch("payroll/fetchUserPayments", {
             contract: this.getModuleByName("payroll").slave_permission.actor,
             account: this.getAccountName,
+            vm: this
           });
         }, 2000);
       } else {

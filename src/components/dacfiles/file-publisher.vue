@@ -147,7 +147,8 @@ export default defineComponent({
           res.trxid,
           res.block_num,
           "fileupload",
-          "content"
+          "content",
+          this
         );
         console.log("receipt", res.block_num, "fetched", x.block_num);
 
@@ -181,7 +182,7 @@ export default defineComponent({
       }
       await this.upload();
       let action = JSON.parse(JSON.stringify(this.publish_action));
-      this.$emit("addtobucket", action);
+      this.$emit("addtobucket", {action:action, vm:this});
     },
   },
   mounted() {},

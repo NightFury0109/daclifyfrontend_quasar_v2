@@ -117,10 +117,11 @@ export default defineComponent({
         setTimeout(() => {
           this.$store.dispatch("group/loadGroupRoutine", {
             groupname: this.getActiveGroup,
+            vm:this
           });
           this.$store.dispatch(
             "elections/loadElectionsRoutine",
-            this.getElectionsContract
+            {vm:this}
           );
         }, 1000);
       } else {
@@ -132,7 +133,7 @@ export default defineComponent({
   mounted() {
     if (!this.getElectionsState) {
       setTimeout(async () => {
-        this.$store.dispatch("elections/loadElectionsRoutine", this.getElectionsContract);
+        this.$store.dispatch("elections/loadElectionsRoutine", {vm:this});
         this.loading_config_state = false;
       }, 1000);
     } else {

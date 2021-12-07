@@ -308,7 +308,10 @@ export default defineComponent({
       immediate: true,
       handler: async function (newV, oldV) {
         if (newV && newV != oldV) {
-          this.is_member = await this.$store.dispatch("user/fetchIsMember", this.account);
+          this.is_member = await this.$store.dispatch("user/fetchIsMember", {
+            accountname:this.account,
+            vm: this
+            });
         }
       },
     },

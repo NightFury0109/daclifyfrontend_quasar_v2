@@ -110,9 +110,9 @@
         <q-item
           clickable
           v-close-popup
-          @click="handleNetworkClick(network.key)"
           v-for="network in networks"
           :key="network.label"
+          @click="handleNetworkClick(network.key)"
         >
           <q-item-section avatar>
             <q-icon :name="network.icon" />

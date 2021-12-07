@@ -258,7 +258,7 @@ export default defineComponent({
     isValidAccountName,
     isAvailableAccountName,
     async isavailableAccountNameWrapper(v) {
-      const test = await isAvailableAccountName({v:v,vm:this});
+      const test = await isAvailableAccountName({ v: v, vm: this });
       console.log(test);
       if (test === true) {
         this.account_name_validated = true;
@@ -297,7 +297,10 @@ export default defineComponent({
       });
 
       setTimeout(() => {
-        this.$store.dispatch("user/fetchHubDeposits", this.getAccountName);
+        this.$store.dispatch("user/fetchHubDeposits", {
+          accountname: this.getAccountName,
+          vm: this,
+        });
       }, 2000);
 
       if (res && res.trxid) {
@@ -353,7 +356,10 @@ export default defineComponent({
       });
 
       setTimeout(() => {
-        this.$store.dispatch("user/fetchHubDeposits", this.getAccountName);
+        this.$store.dispatch("user/fetchHubDeposits", {
+          accountname: this.getAccountName,
+          vm: this,
+        });
       }, 1000);
 
       if (res && res.trxid) {

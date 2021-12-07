@@ -1,5 +1,5 @@
-import { createApp } from "vue";
-const app = createApp({});
+// import { createApp } from "vue";
+// const app = createApp({});
 
 const crypto = require('crypto');
 
@@ -111,13 +111,13 @@ export async function getSystemMsig (proposer, proposal_name) {
   }
 }
 
-export async function serializeActionData (action) {
+export async function serializeActionData (action, vm) {
   try {
     let account = action.account;
     let name = action.name;
     let data = action.data;
-    const contract = await app.config.globalProperties.$eos.api.getContract(account);
-    let hex = app.config.globalProperties.$eos.Serialize.serializeActionData(
+    const contract = await vm.$eos.api.getContract(account);
+    let hex = vm.$eos.Serialize.serializeActionData(
       contract,
       account,
       name,
@@ -132,7 +132,7 @@ export async function serializeActionData (action) {
   }
 }
 
-export async function get_content_from_trace (trxid, block_num, actionname, datakey) {
+export async function get_content_from_trace (trxid, block_num, actionname, datakey, vm) {
   let content = "";
   let error = false;
   let found = false;
@@ -142,7 +142,7 @@ export async function get_content_from_trace (trxid, block_num, actionname, data
   let block;
 
   while (!found && startblock != endblock && !error) {
-    block = await app.config.globalProperties.$eos.api.rpc.get_block(startblock);
+    block = await vm.$eos.api.rpc.get_block(startblock);
     console.log('looking in block_num', startblock)
     // console.log(block)
     if (block && block.transactions.length) {
@@ -178,10 +178,10 @@ export async function get_content_from_trace (trxid, block_num, actionname, data
 }
 
 
-export async function getCurrentCodeHash (rpcEndpoints, account) {
+export async function getCurrentCodeHash (rpcEndpoints, account, vm) {
 
   let url = rpcEndpoints[0] + '/v1/chain/get_raw_abi';
-  let res = await app.config.globalProperties.$axios({
+  let res = await vm.$axios({
     method: 'post',
     url: url,
     data: {

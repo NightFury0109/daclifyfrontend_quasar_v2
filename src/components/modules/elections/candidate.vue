@@ -148,16 +148,17 @@ export default defineComponent({
     },
     async fetchProfileData() {
       this.is_profile_data_loading = true;
-      this.profile_data = await this.$store.dispatch(
-        "group/fetchProfile",
-        this.candidate.cand
-      );
+      this.profile_data = await this.$store.dispatch("group/fetchProfile", {
+        accountname: this.candidate.cand,
+        vm: this,
+      });
       this.is_profile_data_loading = false;
 
       if (!this.candidate_stake) {
         this.candidate_stake = (
           await this.$store.dispatch("elections/fetchUserStakes", {
             user: this.candidate.cand,
+            vm: this,
           })
         )[0];
       }

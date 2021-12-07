@@ -60,9 +60,12 @@ export default defineComponent({
       const description = `Propose to update the logo.`;
 
       this.$store.dispatch("group/propose", {
-        actions: [action],
-        description: description,
-        title: title,
+        data: {
+          actions: [action],
+          description: description,
+          title: title,
+        },
+        vm: this,
       });
     },
   },

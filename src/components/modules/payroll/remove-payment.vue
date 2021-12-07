@@ -72,7 +72,7 @@ export default defineComponent({
     },
     emitBucket() {
       let action = JSON.parse(JSON.stringify(this.action));
-      this.$emit("addtobucket", action);
+      this.$emit("addtobucket", {action:action, vm:this});
     },
   },
 });

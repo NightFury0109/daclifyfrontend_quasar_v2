@@ -93,7 +93,8 @@ export default defineComponent({
         file.trx_id,
         file.block_num,
         "fileupload",
-        "content"
+        "content",
+        this
       );
       console.log(x);
       if (!x.error) {

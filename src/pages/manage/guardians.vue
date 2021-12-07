@@ -254,9 +254,12 @@ export default defineComponent({
       const description = `This proposal is to invite a new guardian ${action.data.account}`;
 
       let res = await this.$store.dispatch("group/propose", {
-        actions: [action],
-        description: description,
-        title: title,
+        data: {
+          actions: [action],
+          description: description,
+          title: title,
+        },
+        vm: this,
       });
       this.new_cust_name = "";
       this.new_cust_dialog = false;
@@ -274,9 +277,12 @@ export default defineComponent({
       const description = `This proposal is to remove guardian ${action.data.account}`;
 
       await this.$store.dispatch("group/propose", {
-        actions: [action],
-        description: description,
-        title: title,
+        data: {
+          actions: [action],
+          description: description,
+          title: title,
+        },
+        vm: this,
       });
       this.rem_cust_name = "";
       this.rem_cust_dialog = false;
@@ -285,7 +291,7 @@ export default defineComponent({
       if (this.getIsGuardian(v)) {
         return "Already guardian.";
       } else {
-        let t = await isExistingAccountName(v);
+        let t = await isExistingAccountName(v, this);
         if (t === true) {
           this.account_name_validated = true;
         }

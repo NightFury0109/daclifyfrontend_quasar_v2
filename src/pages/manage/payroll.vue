@@ -185,10 +185,10 @@ export default defineComponent({
       immediate: true,
       async handler(newVal, oldVal) {
         if (newVal) {
-          this.$store.dispatch(
-            "payroll/loadPayrollRoutine",
-            newVal.slave_permission.actor
-          );
+          this.$store.dispatch("payroll/loadPayrollRoutine", {
+            data: newVal.slave_permission.actor,
+            vm: this,
+          });
         }
       },
     },

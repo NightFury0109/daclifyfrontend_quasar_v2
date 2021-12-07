@@ -237,7 +237,7 @@ export default defineComponent({
       }
       let action = JSON.parse(JSON.stringify(this.action));
       action.data.amount = action.data.amount + " " + this.symbol;
-      this.$emit("addtobucket", action);
+      this.$emit("addtobucket", {action:action, vm:this});
     },
   },
   mounted() {

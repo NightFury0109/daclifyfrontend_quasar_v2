@@ -1,5 +1,5 @@
-import { createApp } from "vue";
-const app = createApp({})
+// import { createApp } from "vue";
+// const app = createApp({})
 
 export function isValidAccountName (v) {
   if (v == "") return true;
@@ -29,9 +29,9 @@ export async function isAvailableAccountName (payload) {
 }
 
 
-export async function isExistingAccountName (v) {
+export async function isExistingAccountName (v, vm) {
   v = v.toLowerCase();
-  let res = await app.config.globalProperties.$eos.api.rpc.get_account(v).catch(e => false);
+  let res = await vm.$eos.api.rpc.get_account(v).catch(e => false);
   if (!res) {
     //accountname not found
     return 'Account does not exists';
@@ -74,10 +74,10 @@ export function isYouTubeUrl (url) {
   return "This is not a valid youtube link";
 }
 
-export async function isAvailableSymbol (v) {
+export async function isAvailableSymbol (v, vm) {
   v = v.toUpperCase();
   let contract = "kasdactokens";
-  let res = await app.config.globalProperties.$eos.api
+  let res = await vm.$eos.api
     .get_table_rows({
       json: true,
       code: contract,

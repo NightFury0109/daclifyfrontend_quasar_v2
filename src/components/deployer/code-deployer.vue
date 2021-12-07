@@ -132,7 +132,9 @@ export default defineComponent({
         requested: [{ actor: this.getActiveGroup, permission: "owner" }],
         proposal_name: PROPOSAL_NAME,
         //   expiration: "2019-08-10T19:14:14",
+        vm: this,
       };
+
       let system_propose_action = await this.$store.dispatch(
         "ual/proposeSystemMsig",
         system_propose_options
@@ -173,10 +175,10 @@ export default defineComponent({
         description: `updating the the code of ${this.module.module_name}. New code hash: ${this.new_hex.code_hash}.`,
         actions: approve_and_execute,
       };
-      let group_propose_action = await this.$store.dispatch(
-        "group/propose",
-        group_propose_options
-      );
+      let group_propose_action = await this.$store.dispatch("group/propose", {
+        data: group_propose_options,
+        vm: this,
+      });
 
       // let res = await this.$store.dispatch("ual/transact", {actions: [system_propose_action], disable_signing_overlay: true });
       let res = await this.$store.dispatch("ual/transact", {
@@ -205,7 +207,8 @@ export default defineComponent({
           if (this.current_code_and_abi_hash === "") {
             this.current_code_and_abi_hash = await getCurrentCodeHash(
               this.getRpcEndpoints,
-              this.module.slave_permission.actor
+              this.module.slave_permission.actor,
+              this
             );
           }
         }

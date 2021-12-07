@@ -89,6 +89,7 @@ export default defineComponent({
           console.log(`call logged in routine for ${newVal}`);
           this.$store.dispatch("user/loggedInRoutine", {
             accountname: this.getAccountName,
+            vm: this
           });
         } else {
           this.$store.dispatch("user/loggedOutRoutine");

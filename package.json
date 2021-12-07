@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@babel/core": "7.0.0",
+    "@eosdacio/ual-wax": "1.5.1",
     "@jafri/eosjs2": "21.0.0-rc.15",
     "@quasar/extras": "^1.0.0",
     "axios": "^0.21.1",

@@ -87,7 +87,7 @@ export default defineComponent({
   methods: {
     async fetchcandidates() {
       if (!this.getCandidates) {
-        this.$store.dispatch("elections/fetchCandidates", this.getElectionsContract);
+        this.$store.dispatch("elections/fetchCandidates", {electionsContract:this.getElectionsContract,vm:this});
       }
     },
   },

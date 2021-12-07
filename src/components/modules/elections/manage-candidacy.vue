@@ -138,7 +138,7 @@ export default defineComponent({
     },
     async fetchUserStakes() {
       if (!this.getUserStakes && this.getAccountName) {
-        await this.$store.dispatch("elections/fetchUserStakes", {});
+        await this.$store.dispatch("elections/fetchUserStakes", {vm:this});
       }
     },
   },

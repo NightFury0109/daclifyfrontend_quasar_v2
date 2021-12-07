@@ -79,7 +79,7 @@
         <div class="row justify-end q-pa-md">
           <propose-bucket-btn
             @click-propose="scope.propose(getProposeAction)"
-            @click-bucket="scope.addtobucket(getBucketAction)"
+            @click-bucket="scope.addtobucket({action:getBucketAction,vm:this})"
             label="Update config"
             :disabled="!!!getCoreConfigDeltas"
           />

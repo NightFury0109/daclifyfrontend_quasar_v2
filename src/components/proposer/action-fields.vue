@@ -162,7 +162,7 @@ export default defineComponent({
         action.data[af.name] = parsed_value;
       });
 
-      this.$store.dispatch("bucket/addToBucket", action);
+      this.$store.dispatch("bucket/addToBucket", {action:action, vm:this});
     },
     isNumberType(type) {
       return numberTypes.includes(type);

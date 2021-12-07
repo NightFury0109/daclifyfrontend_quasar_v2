@@ -318,10 +318,10 @@ export default defineComponent({
   methods: {
     async getProfile() {
       this.profile_is_loading = true;
-      this.profile_data = await this.$store.dispatch(
-        "group/fetchProfile",
-        this.guardian.account
-      );
+      this.profile_data = await this.$store.dispatch("group/fetchProfile", {
+        accountname: this.guardian.account,
+        vm: this,
+      });
       this.profile_is_loading = false;
     },
   },

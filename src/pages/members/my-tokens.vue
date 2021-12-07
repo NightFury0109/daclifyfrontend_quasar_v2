@@ -112,6 +112,7 @@ export default defineComponent({
         this.myTokens = await this.$store.dispatch("group/fetchTokensOwnedByScope", {
           groupname: this.getActiveGroup,
           scope: this.getAccountName,
+          vm: this
         });
         this.is_loading = false;
       }

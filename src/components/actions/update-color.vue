@@ -121,7 +121,7 @@ export default defineComponent({
           hexcolor: this.new_hexcolor,
         },
       };
-      this.$emit("addtobucket", action);
+      this.$emit("addtobucket", {action:action, vm:this});
     },
   },
   watch: {

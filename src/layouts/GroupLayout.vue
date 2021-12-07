@@ -236,6 +236,7 @@ export default defineComponent({
       this.group_is_loading = true;
       await this.$store.dispatch("group/loadGroupRoutine", {
         groupname: groupname,
+        vm: this,
       });
       await new Promise((resolve) => setTimeout(resolve, 400));
       this.$q.addressbarColor.set(getCssVar("primary"));
@@ -298,7 +299,10 @@ export default defineComponent({
       immediate: true,
       handler(newV, oldV) {
         if (newV && this.getAccountName && this.getActiveGroupConfig) {
-          this.$store.dispatch("user/fetchIsMember", this.getAccountName);
+          this.$store.dispatch("user/fetchIsMember", {
+            accountname: this.getAccountName,
+            vm: this,
+          });
         }
       },
     },

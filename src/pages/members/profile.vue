@@ -272,6 +272,7 @@ export default defineComponent({
       if (this.getElectionsContract) {
         this.userVotes = await this.$store.dispatch("elections/fetchUserVotes", {
           voter: this.account,
+          vm: this,
         });
       }
     },
@@ -283,10 +284,10 @@ export default defineComponent({
       async handler(newVal, oldVal) {
         if (newVal && newVal != oldVal) {
           this.account = newVal;
-          this.profile_data = await this.$store.dispatch(
-            "group/fetchProfile",
-            this.account
-          );
+          this.profile_data = await this.$store.dispatch("group/fetchProfile", {
+            accountname: this.account,
+            vm: this,
+          });
           this.active_tab = "textview";
           this.getUserVotes();
           //console.log(this.profile_data)
@@ -311,6 +312,7 @@ export default defineComponent({
           this.my_payments = await this.$store.dispatch("payroll/fetchUserPayments", {
             contract: this.getModuleByName("payroll").slave_permission.actor,
             account: this.account,
+            vm: this
           });
         }
       },

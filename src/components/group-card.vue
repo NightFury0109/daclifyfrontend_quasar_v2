@@ -143,6 +143,7 @@ export default defineComponent({
           res = this.group.ui.custom_ui_url;
         }
       }
+      console.log(res)
       return res;
     },
     getGroupColor(){
@@ -151,7 +152,6 @@ export default defineComponent({
   },
   methods: {
     openURL,
-
     switchViewMode(){
       if(this.view_mode == 'main'){
         this.view_mode = 'info';
@@ -162,9 +162,7 @@ export default defineComponent({
       }
     },
     fetchGroupInfo(){
-
       this.group_info.about = this.group.meta.about;
-
 
       this.info_is_loading = true;
       setTimeout(()=>{
