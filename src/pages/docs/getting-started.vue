@@ -8,7 +8,7 @@
     <h5 class="row justify-between items-center">
       Getting Started with Croneos
       <q-btn flat color="secondary" round @click="openURL(getAppConfig.social.github)">
-        <q-tooltip content-class="bg-primary">Visit our Github repos</q-tooltip>
+        <q-tooltip class="bg-primary">Visit our Github repos</q-tooltip>
         <q-icon name="img:statics/vectors/social/027-github.svg" size="36px" />
       </q-btn>
     </h5>

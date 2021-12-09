@@ -14,12 +14,13 @@
         color="primary"
         @click="manage_module = !manage_module"
       >
-        <q-tooltip content-class="bg-secondary" :delay="500">
+        <q-tooltip class="bg-secondary" :delay="500">
           <span v-if="!manage_module">manage modules</span>
           <span v-else>Go back to modules</span>
         </q-tooltip>
       </q-btn>
     </q-toolbar>
+
     <transition
       enter-active-class="animated zoomIn"
       leave-active-class="animated zoomOut"
@@ -54,8 +55,8 @@
           <no-items v-if="!getModulesWithFilter.length" text="No modules" />
         </q-list>
       </div>
+
       <q-card-section v-else class="relative-position" key="add">
-        <!-- <q-btn icon="close"  round dense  class="q-ma-md " @click="add_payment_view=false"/> -->
         <q-tabs
           v-model="manage_module_view"
           dense
@@ -81,7 +82,7 @@
             style="min-height: 200px"
           >
             <action-proposer>
-              <template slot-scope="scope">
+              <template v-slot="scope">
                 <link-module
                   @propose="scope.propose"
                   @addtobucket="scope.addtobucket"
@@ -100,6 +101,7 @@
         </q-tab-panels>
       </q-card-section>
     </transition>
+
   </q-card>
 </template>
 

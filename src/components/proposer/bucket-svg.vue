@@ -42,6 +42,6 @@ export default defineComponent({
 
 <style>
 .svg_bucket {
-  fill: var(--q-color-primary) !important;
+  fill: var(--q-primary) !important;
 }
 </style>

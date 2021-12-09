@@ -11,7 +11,7 @@
       color="primary"
       :loading="api_call_waiting"
     >
-      <q-tooltip content-class="bg-secondary" :delay="500">
+      <q-tooltip class="bg-secondary" :delay="500">
         Enable notifications for group {{ getActiveGroup }}
       </q-tooltip>
     </q-btn>
@@ -23,7 +23,7 @@
       color="primary"
       :loading="api_call_waiting"
     >
-      <q-tooltip content-class="bg-secondary" :delay="500">
+      <q-tooltip class="bg-secondary" :delay="500">
         Disable notifications for group {{ getActiveGroup }}
       </q-tooltip>
     </q-btn>

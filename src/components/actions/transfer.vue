@@ -49,7 +49,8 @@
           </template>
 
           <template v-slot:option="scope">
-            <q-item v-bind="scope.itemProps" v-on="scope.itemEvents">
+            <!-- <q-item v-bind="scope.itemProps" v-on="scope.itemEvents"> -->
+            <q-item v-bind="scope.itemProps">
               <q-item-section avatar>
                 <q-icon :name="scope.opt.icon" />
               </q-item-section>
@@ -166,7 +167,7 @@ import findAccount from "components/form/find-account";
 import { isValidAccountName, isExistingAccountName } from "../../imports/validators";
 
 export default defineComponent({
-  name: "groupWallet",
+  name: "transfer",
   components: {
     proposeBucketBtn,
     findAccount,
@@ -222,7 +223,7 @@ export default defineComponent({
     isValidAccountName,
     isExistingAccountName,
     async isExistingAccountNameWrapper(v) {
-      let t = await isExistingAccountName(v, this);
+      let t = await isExistingAccountName(v);
       if (t === true) {
         this.to_input_validated = true;
       }
@@ -279,7 +280,7 @@ export default defineComponent({
       action.data.quantity =
         Number(action.data.quantity).toFixed(token.precision) + " " + token.symbol;
 
-      this.$emit("addtobucket", {action:action, vm:this});
+      this.$emit("addtobucket", { action: action, vm: this });
     },
 
     filterFn(val, update) {

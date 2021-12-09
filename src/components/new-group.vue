@@ -99,7 +99,7 @@
                     color="secondary"
                     @click="next(group.groupname)"
                   >
-                    <q-tooltip content-class="bg-secondary" :delay="500">
+                    <q-tooltip class="bg-secondary" :delay="500">
                       This group isn't activated yet. Proceed to activation by clicking
                       the button.
                     </q-tooltip>

@@ -10,7 +10,7 @@
           color="primary"
         >
           <q-tooltip
-            content-class="bg-primary"
+            class="bg-primary"
             :delay="500"
             anchor="center left"
             self="center right"
@@ -58,18 +58,17 @@
               </div>
             </template>
           </q-img>
-          <!-- </div> -->
         </q-carousel-slide>
       </q-carousel>
 
-      <!-- <div  class="q-gutter-md row items-start"> -->
       <transition-group
-        v-if="mode == 'grid'"
+        v-else-if="mode == 'grid'"
+        class="q-gutter-md row items-start"
         appear
         enter-active-class="animated zoomIn"
         leave-active-class="animated zoomOut"
-        class="q-gutter-md row items-start"
         mode="out-in"
+        tag="div"
       >
         <div
           v-for="(photo, i) in profile_data.gallery"
@@ -92,9 +91,6 @@
               mode = 'carousel';
             "
           >
-            <!-- <div class="absolute-bottom text-subtitle1 text-center">
-              {{ photo.caption }}
-            </div> -->
             <template v-slot:error>
               <div class="absolute-full flex flex-center bg-negative text-white">
                 Cannot load image
@@ -112,9 +108,6 @@
           />
         </div>
       </transition-group>
-      <!--</div> -->
-
-      <!-- <pre>{{profile_data.gallery}}</pre> -->
     </div>
     <new-image
       class="q-mt-md"
@@ -131,7 +124,6 @@ import { isYouTubeUrl } from "../../imports/validators";
 import newImage from "components/profile/new-image";
 
 export default defineComponent({
-  // name: 'ComponentName',
   name: "profileGallery",
   props: {
     account: {

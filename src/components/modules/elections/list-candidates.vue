@@ -23,7 +23,7 @@
       <!-- <template v-slot:after>
         <div>
           <span>#{{candidates.length}}</span>
-          <q-tooltip :delay="250" content-class="bg-primary">{{candidates.length}} Active Candidates</q-tooltip>
+          <q-tooltip :delay="250" class="bg-primary">{{candidates.length}} Active Candidates</q-tooltip>
         </div>
       </template> -->
     </q-input>

@@ -1,3 +1,4 @@
+import { boot } from 'quasar/wrappers'
 import firebase from "firebase/app";
 // import * as firebase from 'firebase';
 import "firebase/messaging";
@@ -51,8 +52,7 @@ else {
 }
 
 
-export default ({ Vue }) => {
+export default boot(({ app }) => {
   // something to do
-  Vue.prototype.$messaging = messaging;
-
-};
+  app.config.globalProperties.$messaging = messaging;
+});

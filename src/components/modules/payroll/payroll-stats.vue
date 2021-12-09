@@ -12,7 +12,7 @@
             "
             style="cursor: help; height: 24px; width: 24px"
           >
-            <q-tooltip content-class="bg-secondary" :delay="500">
+            <q-tooltip class="bg-secondary" :delay="500">
               Payment Token:
               {{
                 `${payroll.total_paid.quantity.split(" ")[1]} (${
@@ -47,7 +47,7 @@
           style="cursor: help"
           :key="has_enough_balance !== false ? 'positive' : 'warning'"
         >
-          <q-tooltip content-class="bg-secondary" :delay="500">
+          <q-tooltip class="bg-secondary" :delay="500">
             {{
               has_enough_balance !== false
                 ? `${payroll.pay_permission.actor} is solvent`

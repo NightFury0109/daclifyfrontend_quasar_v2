@@ -60,14 +60,14 @@
     >
       <q-tab-panel name="buyram" class="overflow-hidden no-padding">
         <action-proposer>
-          <template slot-scope="scope">
+          <template v-slot="scope">
             <buy-ram @propose="scope.propose" @addtobucket="scope.addtobucket" />
           </template>
         </action-proposer>
       </q-tab-panel>
       <q-tab-panel name="sellram" class="overflow-hidden no-padding">
         <action-proposer>
-          <template slot-scope="scope">
+          <template v-slot="scope">
             <sell-ram @propose="scope.propose" @addtobucket="scope.addtobucket" />
           </template>
         </action-proposer>
@@ -88,9 +88,10 @@
             v-close-popup
             class="q-ma-md absolute-top-right"
           />
+
           <div class="q-mt-xl">
             <q-slider
-              :value="getResourceWarningLevels[dialog_Resource_warning.type]"
+              v-model="getResourceWarningLevels[dialog_Resource_warning.type]"
               :min="1"
               :max="99"
               :label-always="true"
@@ -109,15 +110,18 @@
         </q-card-section>
       </q-card>
     </q-dialog>
+    
   </q-page>
 </template>
 
 <script>
 import { defineComponent } from "vue";
 import { mapGetters } from "vuex";
-import netResource from "components/net-resource";
-import cpuResource from "components/cpu-resource";
-import ramResource from "components/ram-resource";
+import { defineAsyncComponent, markRaw } from "vue";
+
+// import netResource from "components/net-resource";
+// import cpuResource from "components/cpu-resource";
+// import ramResource from "components/ram-resource";
 import actionProposer from "components/actions/action-proposer";
 
 import pageHeader from "components/page-header";
@@ -128,9 +132,9 @@ import { chunkArray } from "../../imports/helpers";
 export default defineComponent({
   name: "groupRecources",
   components: {
-    netResource,
-    cpuResource,
-    ramResource,
+    // netResource,
+    // cpuResource,
+    // ramResource,
     pageHeader,
     actionProposer,
     buyRam,
@@ -139,9 +143,9 @@ export default defineComponent({
   data() {
     return {
       resourceComponents: [
-        { key: "ram", component: ramResource },
-        { key: "cpu", component: cpuResource },
-        { key: "net", component: netResource },
+        { key: "ram", component: markRaw(defineAsyncComponent(() => import('../../components/ram-resource.vue') )) },
+        { key: "cpu", component: markRaw(defineAsyncComponent(() => import('../../components/cpu-resource.vue') )) },
+        { key: "net", component: markRaw(defineAsyncComponent(() => import('../../components/net-resource.vue') )) },
       ],
       resource_carousel_slide: 0,
       dialog_Resource_warning: {

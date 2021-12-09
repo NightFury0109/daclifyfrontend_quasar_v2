@@ -65,7 +65,7 @@ import { defineComponent } from "vue";
 import { mapGetters } from "vuex";
 
 export default defineComponent({
-  name: "managementmenu",
+  name: "membersMenu",
   data() {
     return {};
   },

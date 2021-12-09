@@ -3,7 +3,7 @@
     <span v-if="label" class="text-caption text-grey-6 q-mr-xs">Threshold:</span>
     <q-badge color="secondary" style="cursor: help">
       {{ THRESHOLD.threshold_name }}
-      <q-tooltip content-class="bg-secondary" :delay="300">
+      <q-tooltip class="bg-secondary" :delay="300">
         {{ contract }}::{{ action_name }} requires {{ THRESHOLD.threshold }} approval
         votes
       </q-tooltip>

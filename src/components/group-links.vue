@@ -19,7 +19,7 @@
         color="primary"
         @click="openURL(link.url)"
       >
-        <q-tooltip content-class="bg-secondary" :delay="500">{{ link.url }}</q-tooltip>
+        <q-tooltip class="bg-secondary" :delay="500">{{ link.url }}</q-tooltip>
       </q-btn>
     </transition-group>
 

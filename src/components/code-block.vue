@@ -21,7 +21,7 @@
         v-clipboard:success="onCopy"
         v-clipboard:error="onError"
       >
-        <q-tooltip content-class="bg-secondary">
+        <q-tooltip class="bg-secondary">
           {{ msg }}
         </q-tooltip>
       </q-btn>

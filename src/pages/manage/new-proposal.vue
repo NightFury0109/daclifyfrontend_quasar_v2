@@ -1,11 +1,10 @@
 <template>
   <q-page padding class="constrain-page-width">
     <page-header title="New Proposal" />
-    <propose-bucket />
+    <proposeBucket />
 
     <q-tabs v-model="active_tab" class="text-primary q-mt-md" dense align="left">
       <q-tab label="Advanced" name="advanced" />
-      <!-- <q-tab label="Profile" name="profile" /> -->
     </q-tabs>
     <q-separator class="q-mb-md" />
 
@@ -36,7 +35,6 @@
           color="primary"
           @click="goBackToActionSelection"
         />
-        <!-- {{active_action_fields}} -->
         <action-fields :fields="active_action_fields" />
       </q-tab-panel>
     </q-tab-panels>

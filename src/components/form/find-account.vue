@@ -18,11 +18,13 @@
       placeholder="Find Contract"
       @input="$emit('input', $event)"
     >
+
       <template v-slot:no-option>
         <q-item>
           <q-item-section class="text-grey"> No results </q-item-section>
         </q-item>
       </template>
+
       <template v-slot:append>
         <transition
           enter-active-class="animated fadeIn"
@@ -36,22 +38,20 @@
           />
         </transition>
       </template>
+
       <template v-slot:prepend>
         <q-icon name="search" />
       </template>
+
       <template v-slot:option="scope">
-        <q-item v-bind="scope.itemProps" v-on="scope.itemEvents">
+        <!-- <q-item v-bind="scope.itemProps" v-on="scope.itemEvents"> -->
+        <q-item v-bind="scope.itemProps">
+
           <q-item-section>
             <q-item-label v-html="scope.opt.label" />
             <q-item-label caption>{{ scope.opt.account }}</q-item-label>
           </q-item-section>
-          <!-- <q-item-section side v-if="scope.opt.warning">
-              <q-icon name="mdi-alert" color="warning" >
-                <q-tooltip content-class="bg-secondary" :delay="500">
-                  Threshold exceeds number of guardians {{getNumberGuardians}}
-                </q-tooltip>
-              </q-icon>
-            </q-item-section> -->
+
         </q-item>
       </template>
     </q-select>

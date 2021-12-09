@@ -1,6 +1,5 @@
 <template>
   <q-page padding class="constrain-page-width">
-    <!-- <kitten test="fff"/> -->
 
     <q-card>
       <div class="row bg-secondary items-center justify-between" style="height: 60px">
@@ -43,7 +42,6 @@
 
     <manage-modules class="q-mt-md" />
 
-    <!-- {{ getNewCoreConfig }} -->
   </q-page>
 </template>
 

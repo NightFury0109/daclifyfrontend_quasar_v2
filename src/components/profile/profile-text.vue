@@ -55,6 +55,6 @@ export default defineComponent({
 </script>
 <style>
 .q-markdown--link {
-  color: var(--q-color-primary);
+  color: var(--q-primary);
 }
 </style>

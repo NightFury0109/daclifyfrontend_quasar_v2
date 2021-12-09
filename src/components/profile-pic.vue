@@ -10,7 +10,7 @@
       @load="$emit('loaded')"
       @error="$emit('error')"
     >
-      <q-tooltip v-if="tooltip" :delay="250" content-class="bg-secondary">
+      <q-tooltip v-if="tooltip" :delay="250" class="bg-secondary">
         {{ account }}
       </q-tooltip>
     </q-img>
@@ -28,7 +28,7 @@
         :size="`${size * 0.4}px`"
         @click="$emit('iconClick')"
       >
-        <q-tooltip v-if="tooltip" :delay="400" content-class="bg-primary">
+        <q-tooltip v-if="tooltip" :delay="400" class="bg-primary">
           Guardian
         </q-tooltip>
       </q-icon>

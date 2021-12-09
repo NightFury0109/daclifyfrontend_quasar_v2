@@ -3,7 +3,7 @@
     <files-index @loadfile="currentFile = $event" />
     <file-viewer :file="currentFile" class="q-mt-md" />
     <!-- <action-proposer>
-      <template slot-scope="scope">
+      <template v-slot="scope">
           <file-publisher :content="`test`" @propose="scope.propose" @addtobucket="scope.addtobucket" />
       </template>
     </action-proposer> -->

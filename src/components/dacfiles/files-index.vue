@@ -15,7 +15,7 @@
           color="primary"
           @click="add_document_view = !add_document_view"
         >
-          <q-tooltip content-class="bg-secondary" :delay="500">
+          <q-tooltip class="bg-secondary" :delay="500">
             <span v-if="!add_document_view">add document</span>
             <span v-else>Go back to documents</span>
           </q-tooltip>
@@ -59,7 +59,7 @@
         <div v-else key="add">
           <q-card-section>
             <action-proposer>
-              <template slot-scope="scope">
+              <template v-slot="scope">
                 <file-publisher
                   :content="`this is test content`"
                   @propose="scope.propose"

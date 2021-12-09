@@ -9,7 +9,7 @@
         </q-item-section>
         <q-item-section>
           <q-item-label caption class="row items-center no-wrap">
-            <span v-if="rprice !== false">{{ rprice }}</span>
+            <span v-if="rprice !== 'none'">{{ rprice }}</span>
 
             <q-btn
               :loading="ramprice_loading"
@@ -31,9 +31,9 @@
         </q-item-section>
 
         <q-item-section>
-          <q-item-label caption class="text-weight-bold">{{
-            getRAMStats.available
-          }}</q-item-label>
+          <q-item-label caption class="text-weight-bold">
+            {{ getRAMStats.available }}
+          </q-item-label>
         </q-item-section>
       </q-item>
 
@@ -64,6 +64,7 @@
         </q-item-section>
       </q-item>
     </q-list>
+
     <q-list v-else dense :dark="dark">
       <q-item-label header>RAM</q-item-label>
       <q-item>
@@ -80,14 +81,14 @@ import { defineComponent } from "vue";
 import { mapGetters } from "vuex";
 
 export default defineComponent({
-  // name: 'ComponentName',
+  name: "ramResource",
   props: {
     dark: false,
   },
   data() {
     return {
       CLOCK_TIMER: null,
-      rprice: false,
+      rprice: 'none',
       ramprice_loading: false,
     };
   },
@@ -131,7 +132,7 @@ export default defineComponent({
         this.rprice = eos_per_byte * 1024 + " EOS/KB";
         console.log(this.rprice);
       } else {
-        this.rprice = false;
+        this.rprice = 'none';
       }
       await new Promise((resolve) => {
         setTimeout(resolve, 100);

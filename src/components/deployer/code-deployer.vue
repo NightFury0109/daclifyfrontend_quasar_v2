@@ -1,5 +1,6 @@
 <template>
   <div v-if="module">
+
     <transition
       enter-active-class="animated fadeIn"
       leave-active-class="animated fadeOut"
@@ -39,10 +40,9 @@
           :disabled="!can_propose_code_update"
           :loading="is_proposing"
         />
-        <!-- {{new_hex.abi_hash}}
-        {{new_hex.code_hash}} -->
       </div>
     </div>
+
   </div>
 </template>
 
@@ -112,7 +112,7 @@ export default defineComponent({
           vmversion: 0,
           code: this.new_hex.wasm,
         },
-        // authorization:[{actor: this.getActiveGroup, permission: "owner"}]
+
         authorization: [this.module.slave_permission],
       };
       let setabi = {
@@ -122,16 +122,15 @@ export default defineComponent({
           account: this.module.slave_permission.actor,
           abi: this.new_hex.abi,
         },
-        // authorization:[{actor: this.getActiveGroup, permission: "owner"}]
+
         authorization: [this.module.slave_permission],
       };
 
       let system_propose_options = {
         return_action: true,
-        actions: [setcode, setabi], //required
+        actions: [setcode, setabi], 
         requested: [{ actor: this.getActiveGroup, permission: "owner" }],
         proposal_name: PROPOSAL_NAME,
-        //   expiration: "2019-08-10T19:14:14",
         vm: this,
       };
 
@@ -156,7 +155,7 @@ export default defineComponent({
             level: { actor: this.getActiveGroup, permission: "owner" },
             proposal_hash: proposal_hash,
           },
-          authorization: [{ actor: this.getActiveGroup, permission: "owner" }], //[{actor: this.getActiveGroup, permission: "owner"}]
+          authorization: [{ actor: this.getActiveGroup, permission: "owner" }],
         },
         {
           account: "eosio.msig",
@@ -166,7 +165,7 @@ export default defineComponent({
             proposal_name: PROPOSAL_NAME,
             executer: this.getActiveGroup,
           },
-          authorization: [{ actor: this.getActiveGroup, permission: "owner" }], //[{actor: this.getActiveGroup, permission: "owner"}]
+          authorization: [{ actor: this.getActiveGroup, permission: "owner" }],
         },
       ];
       let group_propose_options = {
@@ -180,7 +179,6 @@ export default defineComponent({
         vm: this,
       });
 
-      // let res = await this.$store.dispatch("ual/transact", {actions: [system_propose_action], disable_signing_overlay: true });
       let res = await this.$store.dispatch("ual/transact", {
         actions: [system_propose_action, group_propose_action],
         disable_signing_overlay: true,

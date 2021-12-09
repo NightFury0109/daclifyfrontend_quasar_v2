@@ -42,7 +42,7 @@
             color="primary"
             @click="add_hook_view = !add_hook_view"
           >
-            <q-tooltip content-class="bg-secondary" :delay="500">
+            <q-tooltip class="bg-secondary" :delay="500">
               <span v-if="!add_hook_view">Add new hook</span>
               <span v-else>Go back to hooks</span>
             </q-tooltip>
@@ -97,7 +97,7 @@
           </q-list>
 
           <action-proposer v-else key="addhook">
-            <template slot-scope="scope">
+            <template v-slot="scope">
               <add-hook @propose="scope.propose" @addtobucket="scope.addtobucket" />
             </template>
           </action-proposer>

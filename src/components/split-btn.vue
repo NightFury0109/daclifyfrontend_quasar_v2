@@ -21,7 +21,7 @@
         </transition>
         <transition appear enter-active-class="animated zoomIn" mode="out-in" tag="div" >
         <q-btn icon="close"  round color="secondary" text-color="primary" @click="isSplit = false">
-          <q-tooltip content-class="bg-secondary" :delay="500">
+          <q-tooltip class="bg-secondary" :delay="500">
             close
           </q-tooltip>
         </q-btn>

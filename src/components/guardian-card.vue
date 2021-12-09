@@ -45,7 +45,7 @@
                           track-color="grey-4"
                         >
                           <q-icon name="mdi-heart" size="20px" :color="`primary`" :style="`filter: grayscale(${100-getImAliveStats}%); margin-top:3px`" />
-                          <q-tooltip :delay="100" anchor="center right" self="center left" :offset="[10, 10]" content-class="bg-primary">
+                          <q-tooltip :delay="100" anchor="center right" self="center left" :offset="[10, 10]" class="bg-primary">
                             <span>Activity Level: <b>{{getImAliveStats.toFixed(0)}}%</b></span>
                           </q-tooltip>
                         </q-circular-progress>
@@ -162,7 +162,7 @@
                       anchor="center right"
                       self="center left"
                       :offset="[10, 10]"
-                      content-class="bg-primary"
+                      class="bg-primary"
                     >
                       <span
                         >Activity Level: <b>{{ getImAliveStats.toFixed(0) }}%</b></span
@@ -249,9 +249,8 @@
 <script>
 import { defineComponent } from "vue";
 import { mapGetters } from "vuex";
+import { getCssVar } from "quasar";
 
-import { colors } from "quasar";
-const { getBrand } = colors;
 import profileText from "components/profile/profile-text";
 import profileLink from "components/profile-link";
 import imaliveBtn from "components/imalive-btn";
@@ -288,7 +287,7 @@ export default defineComponent({
       thumbStyle: {
         right: "0px",
         borderRadius: "5px",
-        backgroundColor: getBrand("primary"),
+        backgroundColor: getCssVar("primary"),
         width: "5px",
         opacity: 0.75,
       },

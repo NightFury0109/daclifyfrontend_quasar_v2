@@ -25,7 +25,7 @@
     </q-footer>
 
     <!-- (Optional) A Drawer; you can add one more with side="right" or change this one's side -->
-    <q-drawer v-model="leftDrawer" side="left" bordered content-class="bg-grey-2">
+    <q-drawer v-model="leftDrawer" side="left" bordered class="bg-grey-2">
       <q-item-label header>Croneos Documentation</q-item-label>
 
       <q-item clickable to="/docs/getting-started" exact>

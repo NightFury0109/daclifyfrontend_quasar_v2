@@ -98,6 +98,6 @@ export default {
 
 <style>
 .header_box {
-  border-bottom: 5px solid var(--q-color-primary);
+  border-bottom: 5px solid var(--q-primary);
 }
 </style>

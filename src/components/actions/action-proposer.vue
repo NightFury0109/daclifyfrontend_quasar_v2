@@ -7,7 +7,7 @@
     transition-next="fade"
   >
     <q-tab-panel name="request_input" class="overflow-hidden no-padding fit">
-      <slot :propose="proposeAction" :addtobucket="addToBucket"></slot>
+        <slot v-bind:propose="proposeAction" v-bind:addtobucket="addToBucket"></slot>
     </q-tab-panel>
 
     <q-tab-panel name="request_signature" class="fit overflow-hidden no-padding">
@@ -100,16 +100,19 @@ export default defineComponent({
     async addToBucket(e_action) {
       this.propose_state_tab = "add_to_bucket";
       let action = e_action;
-      await this.$store.dispatch("bucket/addToBucket", {action:action, vm:this});
+      await this.$store.dispatch("bucket/addToBucket", { action: action, vm: this });
       this.back_to_first_tab(1500);
     },
 
     async proposeAction(e_payload) {
-      console.log("action_proposer", e_payload);
+      // console.log("action_proposer", e_payload);
       this.propose_state_tab = "request_signature";
       this.error_msg = "";
       try {
-        let res = await this.$store.dispatch("group/propose", { data: e_payload, vm: this });
+        let res = await this.$store.dispatch("group/propose", {
+          data: e_payload,
+          vm: this,
+        });
 
         if (res && res.trxid) {
           this.propose_state_tab = "trx_success";

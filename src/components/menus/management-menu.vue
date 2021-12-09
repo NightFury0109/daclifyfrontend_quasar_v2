@@ -84,7 +84,7 @@
         >
           <q-icon v-if="getActionBucket.length == 0" name="add" color="white" />
           <span v-else>{{ getActionBucket.length }}</span>
-          <q-tooltip content-class="bg-secondary">
+          <q-tooltip class="bg-secondary">
             <span v-if="getActionBucket.length == 0">New Proposal</span>
             <span v-else>{{ `Bucket contains ${getActionBucket.length} actions` }}</span>
           </q-tooltip>
@@ -145,7 +145,7 @@
             icon="mdi-alert"
             text-color="negative"
           >
-            <q-tooltip content-class="bg-secondary">
+            <q-tooltip class="bg-secondary">
               <div v-for="warning in getResourcesLowWarning" :key="warning.type">
                 {{
                   `Group consumed ${warning.perc_used.toFixed(2)}% of its ${warning.type}`
@@ -174,7 +174,7 @@ import { defineComponent } from "vue";
 import { mapGetters } from "vuex";
 
 export default defineComponent({
-  name: "managementmenu",
+  name: "managementMenu",
   data() {
     return {};
   },

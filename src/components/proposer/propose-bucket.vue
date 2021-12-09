@@ -104,6 +104,21 @@
                   v-model="draggable_action_bucket"
                   ghost-class="ghost"
                   handle=".drag_handle"
+                  item-key="id"
+                  tag="transition-group"
+                  :component-data="{name:'fade'}"
+                >
+                  <template #item="{element}">
+                    <bucket-item
+                      :key="element.unique_id"
+                      :action="element"
+                    />
+                  </template>
+                </draggable>
+                <!-- <draggable
+                  v-model="draggable_action_bucket"
+                  ghost-class="ghost"
+                  handle=".drag_handle"
                 >
                   <transition-group
                     enter-active-class="animated zoomIn"
@@ -116,7 +131,7 @@
                       :i="i"
                     />
                   </transition-group>
-                </draggable>
+                </draggable> -->
               </q-list>
               <!-- {{getActionBucket}} -->
               <transition
@@ -381,6 +396,6 @@ export default defineComponent({
 }
 
 .ghost {
-  background: var(--q-color-primary);
+  background: var(--q-primary);
 }
 </style>

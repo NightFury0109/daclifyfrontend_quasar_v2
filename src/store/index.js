@@ -9,8 +9,8 @@ import user from './user';
 import group from './group';
 import bucket from './bucket';
 import elections from './elections';
-// import payroll from './payroll';
-// import hooks from './hooks';
+import payroll from './payroll';
+import hooks from './hooks';
 
 // import example from './module-example'
 
@@ -32,8 +32,8 @@ export default store(function (/* { ssrContext } */) {
       group,
       bucket,
       elections,
-      // payroll,
-      // hooks
+      payroll,
+      hooks
     },
     plugins: [
       createPersistedState({

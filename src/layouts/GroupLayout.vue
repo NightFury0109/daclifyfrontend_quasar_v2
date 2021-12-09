@@ -13,7 +13,7 @@
           @click="leftDrawer = !leftDrawer"
           class="q-mr-xs"
         />
-        <!-- <main-logo /> -->
+
         <div
           class="row items-center"
           v-if="getActiveGroupConfig && getActiveGroupConfig.ui.logo"
@@ -40,18 +40,7 @@
     </q-footer>
 
     <!-- (Optional) A Drawer; you can add one more with side="right" or change this one's side -->
-    <!-- <q-drawer
-      v-model="leftDrawer"
-      behavior="default"
-      side="left"
-      :width="275"
-      :bordered="false"
-      :show-if-above="false"
-      content-class="bg-secondary"
-      :mini="miniState"
-      @mouseover="miniState = false"
-      @mouseout="miniState = false"
-    > -->
+
     <q-drawer
       v-model="leftDrawer"
       behavior="default"
@@ -59,7 +48,7 @@
       :width="275"
       :bordered="false"
       :show-if-above="false"
-      content-class="bg-secondary"
+      class="bg-secondary"
       :mini="miniState"
     >
       <q-list class="absolute-top">
@@ -103,7 +92,6 @@
               </q-item-section>
               <q-item-section v-else>
                 <q-item-label>Members Disabled</q-item-label>
-                <!-- <q-item-label caption>This group doesn't accept member registrations</q-item-label> -->
               </q-item-section>
             </q-item>
 
@@ -136,8 +124,8 @@
           leave-active-class="animated fadeOutLeft"
           mode="out-in"
         >
-          <management-menu v-if="menu_mode === 'management'" key="management_menu" />
-          <members-menu v-else-if="menu_mode === 'members'" key="members_menu" />
+          <managementMenu v-if="menu_mode === 'management'" key="management_menu" />
+          <membersMenu v-else-if="menu_mode === 'members'" key="members_menu" />
         </transition>
 
         <q-list class="text-grey-4">
@@ -148,7 +136,6 @@
             </q-item-section>
             <q-item-section>
               <q-item-label>Reload Group</q-item-label>
-              <!-- <q-item-label caption>mining stats</q-item-label> -->
             </q-item-section>
           </q-item>
 
@@ -158,30 +145,22 @@
             </q-item-section>
             <q-item-section>
               <q-item-label>Browse Groups</q-item-label>
-              <!-- <q-item-label caption>mining stats</q-item-label> -->
             </q-item-section>
           </q-item>
-
-          <!-- <q-item clickable >
-            <q-item-section avatar>
-              <q-icon  name="mdi-school" />
-            </q-item-section>
-            <q-item-section>
-              <q-item-label>Documentation</q-item-label>
-              <q-item-label caption>stay tuned</q-item-label>
-            </q-item-section>
-          </q-item> -->
         </q-list>
       </q-scroll-area>
       <q-toggle v-model="miniState" class="absolute-bottom-right">
-        <q-tooltip content-class="bg-primary" :delay="500"> Toggle mini menu </q-tooltip>
+        <q-tooltip class="bg-primary" :delay="500"> Toggle mini menu </q-tooltip>
       </q-toggle>
     </q-drawer>
 
     <q-page-container class="text-black overflow-hidden" style="padding-bottom: 80px">
-      <transition appear enter-active-class="animated fadeInRight" mode="out-in">
-        <router-view v-if="getActiveGroup" />
-      </transition>
+      <router-view v-slot="{ Component }">
+        <transition appear enter-active-class="animated fadeInRight" mode="out-in">
+          <component :is="Component" />
+        </transition>
+      </router-view>
+      <!-- <router-view /> -->
       <q-page-scroller position="bottom-right" :scroll-offset="150" :offset="[18, 18]">
         <q-btn fab icon="keyboard_arrow_up" color="primary" />
       </q-page-scroller>
@@ -192,15 +171,15 @@
 <script>
 import { defineComponent } from "vue";
 import { getCssVar } from "quasar";
-// const { getBrand } = colors;
 import { mapGetters } from "vuex";
 import loginNetworkSwitcher from "components/ual/login-network-switcher";
 import managementMenu from "components/menus/management-menu";
 import membersMenu from "components/menus/members-menu";
 import { notifyInfo } from "../imports/notifications.js";
+import isEmpty from "../utils/is-empty";
 
 export default defineComponent({
-  // name: 'LayoutName',
+  name: "GroupLayout",
   components: {
     loginNetworkSwitcher,
     managementMenu,
@@ -230,19 +209,7 @@ export default defineComponent({
       };
     },
   },
-  methods: {
-    getCssVar,
-    async loadGroup(groupname) {
-      this.group_is_loading = true;
-      await this.$store.dispatch("group/loadGroupRoutine", {
-        groupname: groupname,
-        vm: this,
-      });
-      await new Promise((resolve) => setTimeout(resolve, 400));
-      this.$q.addressbarColor.set(getCssVar("primary"));
-      this.group_is_loading = false;
-    },
-  },
+
   mounted() {
     if (this.$route.path.startsWith("/manage")) {
       this.menu_mode = "management";
@@ -258,10 +225,10 @@ export default defineComponent({
         if (newVal && newVal != oldVal) {
           this.loadGroup(newVal);
         } else {
-          //this.$store.dispatch('user/loggedOutRoutine');
         }
       },
     },
+
     menu_mode: {
       immediate: false,
       handler(newVal, oldVal) {
@@ -288,7 +255,6 @@ export default defineComponent({
 
           notifyInfo({ message: `you switched to members menu.` });
         } else {
-          //this.$store.dispatch('user/loggedOutRoutine');
           this.$router.push(`/manage/${this.$route.params.groupname}`).catch((err) => {});
           notifyInfo({ message: `you switched to management menu.` });
         }
@@ -312,6 +278,21 @@ export default defineComponent({
       handler(newVal, oldval) {
         this.$store.commit("user/setMiniState", newVal);
       },
+    },
+  },
+
+  methods: {
+    getCssVar,
+    isEmpty,
+    async loadGroup(groupname) {
+      this.group_is_loading = true;
+      await this.$store.dispatch("group/loadGroupRoutine", {
+        groupname: groupname,
+        vm: this,
+      });
+      await new Promise((resolve) => setTimeout(resolve, 400));
+      this.$q.addressbarColor.set(getCssVar("primary"));
+      this.group_is_loading = false;
     },
   },
 });

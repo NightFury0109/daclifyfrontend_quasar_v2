@@ -11,7 +11,7 @@
               @click="goToProfile(vote)"
             >
               <profile-pic :account="vote" :size="40" class="shadow-5" />
-              <q-tooltip content-class="bg-primary" :delay="500">
+              <q-tooltip class="bg-primary" :delay="500">
                 {{ vote }}
               </q-tooltip>
             </div>

@@ -7,6 +7,7 @@
 // https://quasar.dev/quasar-cli/quasar-conf-js
 
 const { configure } = require('quasar/wrappers');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = configure(function (ctx) {
   return {
@@ -26,7 +27,7 @@ module.exports = configure(function (ctx) {
       'eosapi',
       'vueclipboard',
       'emitter',
-      // 'firebase'
+      'firebase'
     ],
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css
@@ -85,6 +86,11 @@ module.exports = configure(function (ctx) {
           test: /\.pug$/,
           loader: 'pug-plain-loader'
         });
+        cfg.plugins.push(
+          new CopyWebpackPlugin([
+            { context: `${__dirname}/src/statics/manifests`, from: '*.*', to: '', toType: 'dir' }
+          ])
+        );
       }
     },
 

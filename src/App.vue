@@ -99,7 +99,7 @@ export default defineComponent({
     getIsDark: {
       immediate: true,
       handler(newVal, oldVal) {
-        console.log("night mode", this.getIsDark);
+        // console.log("night mode", this.getIsDark);
         if (newVal !== undefined && newVal != oldVal) {
           this.$q.dark.set(newVal);
         }

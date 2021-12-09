@@ -24,7 +24,7 @@
                 <proposal-icon :actions="proposal.actions" />
               </div>
               <q-tooltip
-                content-class="bg-secondary"
+                class="bg-secondary"
                 :delay="200"
                 anchor="center right"
                 self="center left"
@@ -338,7 +338,7 @@ export default defineComponent({
 
 <style>
 .proposal-voted {
-  border: 2px solid var(--q-color-primary) !important;
+  border: 2px solid var(--q-primary) !important;
 }
 .proposal {
   border: 2px solid transparent;

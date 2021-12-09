@@ -31,9 +31,9 @@
             dense
             size="sm"
             color="negative"
-            @click="$store.commit('bucket/removeFromActionBucketByIndex', i)"
+            @click="$store.commit('bucket/removeFromActionBucketByIndex', key)"
           >
-            <q-tooltip :delay="400" content-class="bg-secondary">Delete</q-tooltip>
+            <q-tooltip :delay="400" class="bg-secondary">Delete</q-tooltip>
           </q-btn>
         </div>
       </q-item-section>
@@ -73,7 +73,7 @@ export default defineComponent({
   },
   props: {
     action: {},
-    i: 0,
+    key: '',
   },
   data() {
     return {};

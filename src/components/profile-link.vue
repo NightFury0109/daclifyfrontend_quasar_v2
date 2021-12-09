@@ -2,7 +2,7 @@
   <div>
     <router-link :class="inversestyle ? 'text-link2' : 'text-link'" :to="constructlink">
       {{ account }}
-      <q-tooltip content-class="bg-primary" :delay="500"> Visit profile </q-tooltip>
+      <q-tooltip class="bg-primary" :delay="500"> Visit profile </q-tooltip>
     </router-link>
   </div>
 </template>

@@ -19,7 +19,7 @@
             :icon="`img:statics/images/networks/${getActiveNetwork}.png`"
             size="sm"
           >
-            <q-tooltip content-class="bg-secondary" :delay="500">
+            <q-tooltip class="bg-secondary" :delay="500">
               <div v-if="getAccountName">
                 {{
                   `You are connected to ${getActiveNetwork} with ${getSESSION.authenticatorName}`

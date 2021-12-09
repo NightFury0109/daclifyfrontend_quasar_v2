@@ -36,7 +36,7 @@
           :label="payroll.payroll_tag"
           :name="payroll.payroll_tag"
         >
-          <q-tooltip content-class="bg-secondary" :delay="700">
+          <q-tooltip class="bg-secondary" :delay="700">
             {{ payroll.description || "No description" }}
           </q-tooltip>
         </q-tab>
@@ -65,7 +65,7 @@
             color="primary"
             @click="add_payment_view = !add_payment_view"
           >
-            <q-tooltip content-class="bg-secondary" :delay="500">
+            <q-tooltip class="bg-secondary" :delay="500">
               <span v-if="!add_payment_view"
                 >Add payment to payroll <b>{{ getActivePayRoll.payroll_tag }}</b></span
               >
@@ -73,6 +73,7 @@
             </q-tooltip>
           </q-btn>
         </q-toolbar>
+
         <transition
           enter-active-class="animated zoomIn"
           leave-active-class="animated zoomOut"
@@ -98,9 +99,8 @@
             </q-list>
           </div>
           <div v-else class="relative-position" key="add">
-            <!-- <q-btn icon="close"  round dense  class="q-ma-md " @click="add_payment_view=false"/> -->
             <action-proposer>
-              <template slot-scope="scope">
+              <template v-slot="scope">
                 <add-payment
                   @propose="scope.propose"
                   @addtobucket="scope.addtobucket"

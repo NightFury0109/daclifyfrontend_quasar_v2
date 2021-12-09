@@ -1,6 +1,6 @@
 <template>
   <action-proposer>
-    <template slot-scope="scope">
+    <template v-slot="scope">
       <!-- <buy-ram @propose="scope.propose" @addtobucket="scope.addtobucket" /> -->
 
       <div class="">
@@ -31,7 +31,7 @@
                     })
                   "
                 >
-                  <q-tooltip :delay="450" content-class="bg-secondary">
+                  <q-tooltip :delay="450" class="bg-secondary">
                     undo change
                   </q-tooltip>
                 </q-btn>
@@ -67,7 +67,7 @@
                     })
                   "
                 >
-                  <q-tooltip :delay="450" content-class="bg-secondary">
+                  <q-tooltip :delay="450" class="bg-secondary">
                     undo change
                   </q-tooltip>
                 </q-btn>

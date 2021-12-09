@@ -12,9 +12,6 @@
         maxlength="12"
         :rules="[]"
       >
-        <!-- <template v-slot:prepend>
-            xxx
-        </template> -->
       </q-input>
     </div>
 
@@ -45,7 +42,9 @@
         :rules="[(val) => !!val || '* Required']"
       >
         <template v-slot:option="scope">
-          <q-item v-bind="scope.itemProps" v-on="scope.itemEvents">
+
+          <!-- <q-item v-bind="scope.itemProps" v-on="scope.itemEvents"> -->
+          <q-item v-bind="scope.itemProps">
             <q-item-section>
               <q-item-label v-html="scope.opt.label" />
               <q-item-label caption
@@ -54,17 +53,17 @@
             </q-item-section>
             <q-item-section side v-if="scope.opt.warning">
               <q-icon name="mdi-alert" color="warning">
-                <q-tooltip content-class="bg-secondary" :delay="500">
+                <q-tooltip class="bg-secondary" :delay="500">
                   Threshold exceeds number of guardians {{ getNumberGuardians }}
                 </q-tooltip>
               </q-icon>
             </q-item-section>
           </q-item>
+
         </template>
       </q-select>
     </div>
 
-    <!-- {{recurrence_delay}} -->
     <div class="row justify-between full-width items-center">
       <threshold-badge label :contract="action.account" :action_name="action.name" />
       <propose-bucket-btn
@@ -74,7 +73,7 @@
         :disabled="false"
       />
     </div>
-    <!-- <pre>{{action}}</pre> -->
+
   </div>
 </template>
 

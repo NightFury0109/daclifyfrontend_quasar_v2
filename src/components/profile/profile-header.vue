@@ -54,7 +54,7 @@
               dense
               flat
             >
-              <q-tooltip content-class="bg-secondary" :delay="500">
+              <q-tooltip class="bg-secondary" :delay="500">
                 Explore <b>{{ account }}</b> on {{ getSelectedBlockExplorer.base }}
               </q-tooltip>
             </q-btn>
@@ -86,7 +86,7 @@
               @click="unregmember"
               :loading="is_unregging"
             >
-              <q-tooltip content-class="bg-secondary" :delay="500">
+              <q-tooltip class="bg-secondary" :delay="500">
                 Unregister as member.
               </q-tooltip>
             </q-btn>
@@ -96,7 +96,7 @@
               @click="delprofile"
               :loading="is_clearing_profile"
             >
-              <q-tooltip content-class="bg-secondary" :delay="500">
+              <q-tooltip class="bg-secondary" :delay="500">
                 Clear all profile data inclusive avatar. This requires a page reload.
               </q-tooltip>
             </q-btn>

@@ -16,7 +16,7 @@
             color="primary"
             @click="raw = !raw"
           >
-            <q-tooltip content-class="bg-secondary" :delay="500">
+            <q-tooltip class="bg-secondary" :delay="500">
               todo: this is work in progress...
             </q-tooltip>
           </q-btn>

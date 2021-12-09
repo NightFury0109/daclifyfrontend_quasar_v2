@@ -58,7 +58,7 @@
         @click="refresh_deposits"
         :loading="is_loading_deposits"
       >
-        <q-tooltip content-class="bg-secondary" :delay="500"> Reload </q-tooltip>
+        <q-tooltip class="bg-secondary" :delay="500"> Reload </q-tooltip>
       </q-btn>
       <div>
         <transition

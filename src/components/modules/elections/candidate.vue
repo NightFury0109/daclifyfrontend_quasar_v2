@@ -170,7 +170,7 @@ export default defineComponent({
 
 <style>
 .candidate-selected {
-  border: 2px solid var(--q-color-primary) !important;
+  border: 2px solid var(--q-primary) !important;
 }
 .candidate {
   border: 2px solid transparent;

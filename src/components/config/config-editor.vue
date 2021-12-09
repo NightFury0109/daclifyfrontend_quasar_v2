@@ -110,7 +110,7 @@
         <q-tab-panel name="Color" class="overflow-hidden">
           <page-header title="UI Color" />
           <action-proposer>
-            <template slot-scope="scope">
+            <template v-slot="scope">
               <update-color @propose="scope.propose" @addtobucket="scope.addtobucket" />
             </template>
           </action-proposer>

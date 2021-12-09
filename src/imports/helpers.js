@@ -1,6 +1,3 @@
-// import { createApp } from "vue";
-// const app = createApp({});
-
 const crypto = require('crypto');
 
 export function randomName () {
@@ -88,7 +85,7 @@ export function chunkArray (arr, chunksize) {
 
 export async function getSystemMsig (proposer, proposal_name) {
   let contract = "eosio.msig";
-  let res = await app.config.globalProperties.$eos.api.rpc
+  let res = await this.$eos.api.rpc
     .get_table_rows({
       json: true,
       code: contract,
@@ -187,13 +184,14 @@ export async function getCurrentCodeHash (rpcEndpoints, account, vm) {
     data: {
       account_name: account
     }
-  })
+  });
+
   console.log('fetched code hash for', account, res.data);
+
   return {
     code_hash: res.data.code_hash != "0000000000000000000000000000000000000000000000000000000000000000" ? res.data.code_hash : false,
     abi_hash: res.data.abi != "" ? res.data.abi_hash : false
   }
-
 }
 
 

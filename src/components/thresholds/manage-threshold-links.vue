@@ -1,6 +1,6 @@
 <template>
   <q-card>
-    <!-- {{ getThresholdLinksWithFilter }} -->
+
     <q-toolbar class="bg-secondary text-white shadow-2">
       <q-toolbar-title :shrink="true">
         <span v-if="add_threshold_link">Add Threshold Link</span>
@@ -14,12 +14,13 @@
         color="primary"
         @click="add_threshold_link = !add_threshold_link"
       >
-        <q-tooltip content-class="bg-secondary" :delay="500">
+        <q-tooltip class="bg-secondary" :delay="500">
           <span v-if="!add_threshold_link">Add threshold link</span>
           <span v-else>Go back to threshold links</span>
         </q-tooltip>
       </q-btn>
     </q-toolbar>
+
     <transition
       enter-active-class="animated zoomIn"
       leave-active-class="animated zoomOut"
@@ -56,10 +57,10 @@
         </q-list>
       </div>
       <div v-else class="relative-position" key="add">
-        <!-- <q-btn icon="close"  round dense  class="q-ma-md " @click="add_payment_view=false"/> -->
+
         <q-card-section>
           <action-proposer>
-            <template slot-scope="scope">
+            <template v-slot="scope">
               <add-threshold-link
                 @propose="scope.propose"
                 @addtobucket="scope.addtobucket"
@@ -70,7 +71,6 @@
       </div>
     </transition>
 
-    <!-- {{getThresholds}} -->
   </q-card>
 </template>
 

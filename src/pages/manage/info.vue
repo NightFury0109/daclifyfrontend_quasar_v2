@@ -1,7 +1,5 @@
 <template>
   <q-page padding class="constrain-page-width">
-    <!-- <div v-if="getActiveGroupConfig" class="row q-col-gutter-md"> -->
-
     <transition-group
       v-if="getActiveGroupConfig"
       appear
@@ -67,7 +65,6 @@
         <q-card>
           <div class="row justify-between items-center">
             <clap-for-group />
-            <!-- <group-notification-manager /> -->
           </div>
         </q-card>
       </div>
@@ -102,7 +99,7 @@
             <q-item-section avatar>
               <q-icon name="mdi-account-card-details" color="primary" size="xl" />
               <q-tooltip
-                content-class="bg-secondary"
+                class="bg-secondary"
                 :delay="500"
                 anchor="center right"
                 self="center left"
@@ -187,11 +184,7 @@
           <new-election-timer />
         </q-card>
       </div>
-
-      <!-- </div> -->
     </transition-group>
-
-    <!-- <pre>{{getActiveGroupConfig}}</pre> -->
   </q-page>
 </template>
 

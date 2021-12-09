@@ -16,7 +16,7 @@
             icon="close"
             @click="$store.commit('ual/setShouldRenderLoginModal', false); resetUI()"
           >
-            <q-tooltip content-class="bg-secondary text-white">Close</q-tooltip>
+            <q-tooltip class="bg-secondary text-white">Close</q-tooltip>
           </q-btn>
         </q-bar>
 
@@ -25,6 +25,7 @@
             v-model="slide"
             transition-prev="scale"
             transition-next="scale"
+            transition-duration="500"
             animated
             control-color="red"
             class="no-padding"

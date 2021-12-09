@@ -42,7 +42,7 @@
     </template>
     <q-card>
       <action-proposer>
-        <template slot-scope="scope">
+        <template v-slot="scope">
           <remove-payment
             :payment="payment"
             @propose="scope.propose"

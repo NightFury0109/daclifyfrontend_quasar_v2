@@ -4,7 +4,7 @@
       <q-item-section avatar>
         <q-icon name="mdi-alarm-multiple" color="primary" size="xl" />
         <q-tooltip
-          content-class="bg-secondary"
+          class="bg-secondary"
           :delay="500"
           anchor="center right"
           self="center left"

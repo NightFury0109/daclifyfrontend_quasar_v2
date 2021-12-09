@@ -1,14 +1,14 @@
 <template>
   <q-page padding class="constrain-page-width">
-    <page-header title="Group Wallet" />
+    <pageHeader title="Group Wallet" />
 
     <q-card>
       <q-card-section>
-        <action-proposer>
-          <template slot-scope="scope">
-            <transfer @propose="scope.propose" @addtobucket="scope.addtobucket" />
+        <actionProposer>
+          <template v-slot="props">
+            <transfer @propose="props.propose" @addtobucket="props.addtobucket" />
           </template>
-        </action-proposer>
+        </actionProposer>
       </q-card-section>
     </q-card>
   </q-page>

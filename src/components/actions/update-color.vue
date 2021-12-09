@@ -43,10 +43,8 @@
 <script>
 import { defineComponent } from "vue";
 import { mapGetters } from "vuex";
-import { colors } from "quasar";
+import { setCssVar } from "quasar";
 import proposeBucketBtn from "components/actions/propose-bucket-btn";
-// destructuring to keep only what is needed
-const { setBrand, getBrand } = colors;
 
 export default defineComponent({
   name: "updatecolor",
@@ -92,7 +90,7 @@ export default defineComponent({
   methods: {
     setNewColor(c) {
       this.new_hexcolor = c;
-      setBrand("primary", c);
+      setCssVar("primary", c);
     },
 
     emitPropose() {

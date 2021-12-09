@@ -87,7 +87,7 @@
                     @click="updateProfileDataKey"
                     :loading="is_transacting"
                   >
-                    <q-tooltip content-class="bg-secondary" :delay="700">
+                    <q-tooltip class="bg-secondary" :delay="700">
                       Click update when you are ready.
                     </q-tooltip>
                   </q-btn>
@@ -122,7 +122,7 @@
                 <profile-files :account="account" :profile_data="profile_data" />
               </q-tab-panel>
               <q-tab-panel name="gallery" class="overflow-hidden no-padding">
-                <profile-gallery :account="account" :profile_data="profile_data" />
+                <profileGallery :account="account" :profile_data="profile_data" />
               </q-tab-panel>
               <q-tab-panel name="mypayments" class="overflow-hidden no-padding">
                 <my-payments :payments="my_payments" class="q-mt-md" />

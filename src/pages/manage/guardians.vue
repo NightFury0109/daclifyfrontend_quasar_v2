@@ -291,7 +291,7 @@ export default defineComponent({
       if (this.getIsGuardian(v)) {
         return "Already guardian.";
       } else {
-        let t = await isExistingAccountName(v, this);
+        let t = await isExistingAccountName(v);
         if (t === true) {
           this.account_name_validated = true;
         }
