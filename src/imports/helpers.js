@@ -171,7 +171,6 @@ export async function get_content_from_trace (trxid, block_num, actionname, data
     content: content,
     block_num: startblock
   }
-
 }
 
 

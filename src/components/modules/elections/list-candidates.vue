@@ -31,6 +31,7 @@
       appear
       enter-active-class="animated zoomIn"
       leave-active-class="animated zoomOut"
+      tag="div"
     >
       <candidate v-for="cand in candidates" :candidate="cand" :key="cand.cand" />
     </transition-group>

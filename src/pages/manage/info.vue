@@ -34,6 +34,7 @@
                 </q-item-section>
               </q-item>
             </div>
+            
             <div class="q-mt-md">
               <div>About</div>
               <q-markdown
@@ -46,7 +47,7 @@
 
             <div class="text-weight-light row justify-between items-center">
               <div>
-                <group-links :links="getActiveGroupConfig.meta.links" />
+                <groupLinks :links="getActiveGroupConfig.meta.links" />
               </div>
               <q-item>
                 <q-item-section>
@@ -57,6 +58,7 @@
                 </q-item-section>
               </q-item>
             </div>
+
           </q-card-section>
         </q-card>
       </div>

@@ -6,6 +6,7 @@
       enter-active-class="animated zoomIn"
       leave-active-class="animated zoomOut"
       class="row text-caption text-weight-light justify-center items-center"
+      tag="div"
     >
       <q-btn
         class="q-mr-sm q-my-xs"
@@ -33,7 +34,7 @@ import { isValidUrl } from "../imports/validators.js";
 import { openURL } from "quasar";
 
 export default defineComponent({
-  // name: 'ComponentName',
+  name: 'groupLinks',
   props: {
     links: {
       default: () => [],

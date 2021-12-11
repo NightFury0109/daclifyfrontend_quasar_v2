@@ -104,7 +104,7 @@ export default defineComponent({
       }
       console.log("receipt", file.block_num, "fetched", x.block_num);
       this.is_loading = false;
-    },
+    }
   },
   watch: {
     file: {

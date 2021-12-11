@@ -86,6 +86,7 @@
           enter-active-class="animated zoomIn"
           leave-active-class="animated zoomOut"
           class="row"
+          tag="div"
         >
           <div v-for="vote in getNewVotes" :key="`f${vote}`">
             <profile-pic

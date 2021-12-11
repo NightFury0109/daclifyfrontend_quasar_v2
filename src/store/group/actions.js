@@ -309,6 +309,7 @@ export async function fetchAvatars ({ state, commit }, payload) {
     table: "avatars",
     limit: -1
   });
+
   if (res && res.rows) {
     console.log(`fetched avatars for group ${payload.groupname}`, res.rows);
     commit('setAvatars', res.rows);
