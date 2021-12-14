@@ -34,7 +34,7 @@
       >
         <q-carousel-slide :name="`request_account_name`" class="no-padding">
           <div>
-            <!-- account input -->
+
             <div class="rounded-borders overflow-hidden">
               <q-input
                 :dark="false"
@@ -52,7 +52,6 @@
                   (val) => !!val || '* Required',
                   isValidAccountName,
                   (val) => val.length == 12 || 'Group name must be min 12  chars.',
-
                   isavailableAccountNameWrapper,
                 ]"
                 @input="account_name_validated = false"
@@ -71,8 +70,7 @@
                 </template>
               </q-input>
             </div>
-            <!-- account input -->
-            <!-- next button -->
+
             <div class="column justify-center items-center q-mt-lg">
               <q-btn
                 color="primary"
@@ -107,7 +105,7 @@
                 </transition-group>
               </div>
             </div>
-            <!-- next button -->
+
           </div>
         </q-carousel-slide>
 
@@ -132,7 +130,6 @@
             </q-btn>
           </div>
 
-          <!-- voice toggle -->
           <div class="text-grey-6">
             <div>
               Account will be created. Estimated RAM cost is {{ getResourceEstimation }}
@@ -186,7 +183,7 @@
         </q-carousel-slide>
       </q-carousel>
     </div>
-    <wasm-compiler ref="wasm_compiler" />
+    <wasmCompiler ref="wasm_compiler" />
   </div>
 </template>
 
@@ -199,7 +196,7 @@ import wasmCompiler from "components/wasm-compiler";
 import { isValidAccountName, isAvailableAccountName } from "../imports/validators";
 
 export default defineComponent({
-  name: "create",
+  name: "newGroup",
   components: {
     wasmCompiler,
   },
@@ -254,7 +251,30 @@ export default defineComponent({
       return res;
     },
   },
-  methods: {
+ 
+  async mounted() {
+    this.$store.dispatch("app/fetchRamPricePerByte", { vm: this });
+
+    await this.get_wasm_and_abi_from_github();
+
+    if (this.prefill.group_account_name) {
+      this.new_group_account_name = this.prefill.group_account_name;
+    }
+  },
+  watch: {
+    new_group_account_name: function () {
+      console.log(this.$refs.accountinput.hasError);
+    },
+    getAccountName: {
+      immediate: true,
+      handler: function (newV, oldV) {
+        if (this.getAccountName) {
+          this.getGroupsByCreator();
+        }
+      },
+    },
+  },
+   methods: {
     isValidAccountName,
     isAvailableAccountName,
     async isavailableAccountNameWrapper(v) {
@@ -443,28 +463,6 @@ export default defineComponent({
       console.log("fetched groups by creator", groups_by_creator);
       //this.groups_by_creator = [{groupname:"test", state:0}, {groupname:"test1", state:0}];
       this.groups_by_creator = groups_by_creator;
-    },
-  },
-  async mounted() {
-    this.$store.dispatch("app/fetchRamPricePerByte", { vm: this });
-
-    await this.get_wasm_and_abi_from_github();
-
-    if (this.prefill.group_account_name) {
-      this.new_group_account_name = this.prefill.group_account_name;
-    }
-  },
-  watch: {
-    new_group_account_name: function () {
-      console.log(this.$refs.accountinput.hasError);
-    },
-    getAccountName: {
-      immediate: true,
-      handler: function (newV, oldV) {
-        if (this.getAccountName) {
-          this.getGroupsByCreator();
-        }
-      },
     },
   },
 });

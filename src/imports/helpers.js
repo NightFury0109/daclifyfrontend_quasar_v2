@@ -1,4 +1,4 @@
-const crypto = require('crypto');
+const crypto = require('crypto')
 
 export function randomName () {
   let name = ''
@@ -10,7 +10,7 @@ export function randomName () {
 }
 
 export function sha256 (content) {
-  return crypto.createHash(`sha256`).update(content).digest(`hex`)
+  return crypto.createHash('sha256').update(content).digest('hex');
 }
 
 export function secondsToDhms (seconds) {
@@ -99,7 +99,7 @@ export async function getSystemMsig (proposer, proposal_name) {
     console.log(res.rows)
     //hash code 
     let r = {
-      hash_code: crypto.createHash(`sha256`).update(res.rows[0].packed_transaction).digest(`hex`),
+      hash_code: crypto.createHash('sha256').update(res.rows[0].packed_transaction).digest('hex'),
     }
     return res.rows[0];
 

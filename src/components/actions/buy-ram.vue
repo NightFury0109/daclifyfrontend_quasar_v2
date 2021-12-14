@@ -119,7 +119,7 @@ export default defineComponent({
       }
       let action = JSON.parse(JSON.stringify(this.action));
       action.data.quant = action.data.quant + " " + this.symbol;
-      this.$emit("addtobucket", {action:action, vm:this});
+      this.$emit("addtobucket", action);
     },
   },
   watch: {

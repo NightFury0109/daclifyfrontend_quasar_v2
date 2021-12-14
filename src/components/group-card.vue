@@ -22,7 +22,7 @@
                 contain
                 v-if="group.ui.logo"
                 :src="group.ui.logo"
-                style=" max-width:70%; filter: brightness(0) invert(1); max-height:70px"
+                style="filter: brightness(0) invert(1); width: 100px;max-width: 70%; height: 100%"
                 spinner-color="white"
               >
                 <q-tooltip class="bg-secondary" :delay="500">

@@ -13,7 +13,7 @@
           :rules="[
             (val) => !!val || '* Required',
             isValidAccountName,
-            isExistingAccountName,
+            isExistingAccountNameWrapper,
           ]"
         >
           <template v-slot:prepend>
@@ -199,6 +199,9 @@ export default defineComponent({
     isValidAccountName,
     isExistingAccountName,
 
+    async isExistingAccountNameWrapper(v) {
+      return await isExistingAccountName({ value: v, vm: this });
+    },
     getPrecision() {
       let amount = this.payroll.total_paid.quantity.split(" ")[0];
       let precision = amount.split(".")[1];
@@ -237,7 +240,7 @@ export default defineComponent({
       }
       let action = JSON.parse(JSON.stringify(this.action));
       action.data.amount = action.data.amount + " " + this.symbol;
-      this.$emit("addtobucket", {action:action, vm:this});
+      this.$emit("addtobucket", action);
     },
   },
   mounted() {

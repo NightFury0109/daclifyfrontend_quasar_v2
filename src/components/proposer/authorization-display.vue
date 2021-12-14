@@ -46,7 +46,7 @@
           :rules="[
             (val) => !!val || '* Required',
             isValidAccountName,
-            isExistingAccountName,
+            isExistingAccountNameWrapper,
           ]"
         >
         </q-input>
@@ -100,6 +100,9 @@ export default defineComponent({
   methods: {
     isValidAccountName,
     isExistingAccountName,
+    async isExistingAccountNameWrapper(v) {
+      return await isExistingAccountName({ value: v, vm: this });
+    },
     add() {
       this.$refs.actor.validate();
       this.$refs.permission.validate();

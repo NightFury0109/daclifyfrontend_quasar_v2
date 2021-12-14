@@ -223,7 +223,7 @@ export default defineComponent({
     isValidAccountName,
     isExistingAccountName,
     async isExistingAccountNameWrapper(v) {
-      let t = await isExistingAccountName(v);
+      let t = await isExistingAccountName({value:v,vm:this});
       if (t === true) {
         this.to_input_validated = true;
       }
@@ -280,7 +280,7 @@ export default defineComponent({
       action.data.quantity =
         Number(action.data.quantity).toFixed(token.precision) + " " + token.symbol;
 
-      this.$emit("addtobucket", { action: action, vm: this });
+      this.$emit("addtobucket", action);
     },
 
     filterFn(val, update) {

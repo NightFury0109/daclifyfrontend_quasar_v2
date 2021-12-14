@@ -26,9 +26,9 @@ export async function isAvailableAccountName (payload) {
 }
 
 
-export async function isExistingAccountName (v) {
-  v = v.toLowerCase();
-  let res = await this.$eos.api.rpc.get_account(v).catch(e => false);
+export async function isExistingAccountName (payload) {
+  payload.value = payload.value.toLowerCase();
+  let res = await payload.vm.$eos.api.rpc.get_account(payload.value).catch(e => false);
   if (!res) {
     //accountname not found
     return 'Account does not exists';

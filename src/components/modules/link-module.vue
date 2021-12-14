@@ -39,7 +39,7 @@
           :rules="[
             (val) => !!val || '* Required',
             isValidAccountName,
-            isExistingAccountName,
+            isExistingAccountNameWrapper,
           ]"
         >
         </q-input>
@@ -123,6 +123,9 @@ export default defineComponent({
   methods: {
     isValidAccountName,
     isExistingAccountName,
+    async isExistingAccountNameWrapper(v) {
+     return await isExistingAccountName({value:v,vm:this});
+    },
     validateDuplicateModule(module_name) {
       // console.log(module_name)
       let r = this.getModuleByName(module_name);
@@ -168,7 +171,7 @@ export default defineComponent({
         return;
       }
       let action = JSON.parse(JSON.stringify(this.action));
-      this.$emit("addtobucket", {action:action, vm:this});
+      this.$emit("addtobucket", action);
     },
   },
   mounted() {

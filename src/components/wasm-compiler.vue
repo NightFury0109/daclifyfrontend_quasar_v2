@@ -40,18 +40,17 @@ export default defineComponent({
       filesize: "",
     };
   },
-  computed: {
-    ...mapGetters({
-      getDacApi: "global/getDacApi",
-    }),
-  },
+  // computed: {
+  //   ...mapGetters({
+  //     getDacApi: "global/getDacApi",
+  //   }),
+  // },
   methods: {
     async loadRemoteWasm(url) {
       url = url + "?t=" + new Date().getTime();
       let res = await this.$axios.get(url, {
         responseType: "arraybuffer",
       });
-
       let code_hash = sha256(new Uint8Array(res.data, 0));
       console.log("calculated code_hash", code_hash);
       res = {

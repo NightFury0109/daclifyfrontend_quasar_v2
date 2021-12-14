@@ -182,7 +182,7 @@ export default defineComponent({
       }
       await this.upload();
       let action = JSON.parse(JSON.stringify(this.publish_action));
-      this.$emit("addtobucket", {action:action, vm:this});
+      this.$emit("addtobucket", action);
     },
   },
   mounted() {},
