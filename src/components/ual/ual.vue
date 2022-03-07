@@ -2,7 +2,7 @@
   <div>
     <q-dialog
       v-model="getShouldRenderLoginModal"
-      persistent
+      persistent 
       transition-show="flip-down"
       transition-hide="flip-up"
     >
@@ -45,7 +45,7 @@
               >No authenticators are available for your current browser and/or device.</div>
             </q-carousel-slide>
 
-            <q-carousel-slide name="accountname_input" class="column no-wrap justify-between">
+            <!-- <q-carousel-slide name="accountname_input" class="column no-wrap justify-between">
               <div class="text-black">Input your accountname</div>
               <q-input type="text" v-model="accountname" autofocus @keyup.enter.native="connectAuthenticator(authenticator)" />
               <div class="column">
@@ -58,7 +58,7 @@
                 />
                 <q-btn label="back" flat color="primary" class="q-mt-sm" @click="resetUI" />
               </div>
-            </q-carousel-slide>
+            </q-carousel-slide> -->
 
             <q-carousel-slide name="error" class="column no-wrap justify-between">
               <div class="text-red">{{error_msg}}</div>

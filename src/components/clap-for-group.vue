@@ -40,7 +40,7 @@
               :label-value="clap_amount / 10000 + ' EOS/TLOS/WAX'"
               color="primary"
             />
-            <q-input :value="clap_amount / 10000" outlined dense :readonly="true">
+            <q-input v-model="clap_amount_show" outlined dense :readonly="true">
               <template v-slot:append> EOS/TLOS </template>
             </q-input>
             <q-btn
@@ -71,7 +71,16 @@ export default defineComponent({
     return {
       clap_modal: false,
       clap_amount: 5000,
+      clap_amount_show: 0.5
     };
+  },
+  watch:{
+    clap_amount: {
+      immediate: true,
+      handler(newVal, oldVal){
+        this.clap_amount_show=newVal/10000;
+      }
+    }
   },
   computed: {
     ...mapGetters({

@@ -113,7 +113,11 @@ export default defineComponent({
           table: "dacfiles",
           limit: -1,
         })
-        .catch((e) => false);
+        .catch((e) => {
+          console.log("File Error", e);
+        });
+
+      console.log("File", res);
       if (res && res.rows.length) {
         this.file_scopes = res.rows;
       }
